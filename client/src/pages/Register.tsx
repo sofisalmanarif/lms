@@ -5,6 +5,14 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@radix-ui/react-label"
 // import { LoaderCircle } from "lucide-react"
 
+import {
+    Select,
+    SelectContent,
+    SelectGroup,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+  } from "@/components/ui/select"
 import { useState } from "react"
 import { Link } from "react-router-dom"
 import  * as yup from "yup"
@@ -36,14 +44,10 @@ const Register = () => {
         .required("Phone Number is required"),
         address:yup.string().required("Address is required"),
         validDocument:yup.string().required("Please upload one Document"),
-        password:yup.string()
-        .matches(/[A-Z]/,"Password must contain atleast one uppercase character")
-        .matches(/[a-z]/,"Password must contain atleast one lowercase character")
-        .matches(/[0-9]/,"Password must contain atleast one number")
-        .min(8,"Password must be atleast 8 characters")
-        .required("Password is required")
+        
       });
 
+      
     const loginHandler =async(e:React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault()
         try {
@@ -68,6 +72,9 @@ const Register = () => {
     }
 
 
+    
+
+
 
   return (
     <div className="w-full h-screen  flex ">
@@ -86,8 +93,23 @@ const Register = () => {
                         {errors?.email && <ErrorMessage message={errors.email}/>}
                     </div>
                     <div>
-                        <Label>Library</Label>
-                        <Input value={user?.library} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setUser({ ...user, library: e.target.value })} type="select" placeholder=""></Input>
+                        {/* <Label>Library</Label> */}
+                        {/* <Input value={user?.library} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setUser({ ...user, library: e.target.value })} type="select" placeholder=""></Input> */}
+                        <Select onValueChange={(value) => setUser({ ...user, library: value })} >
+                            <SelectTrigger className="w-[180px]">
+                                <SelectValue placeholder="Select a Library" />
+                            </SelectTrigger>
+                            <SelectContent>
+                                <SelectGroup>
+                                {/* <SelectLabel>Library</SelectLabel> */}
+                                <SelectItem value="apple">Apple</SelectItem>
+                                <SelectItem value="banana">Banana</SelectItem>
+                                <SelectItem value="blueberry">Blueberry</SelectItem>
+                                <SelectItem value="grapes">Grapes</SelectItem>
+                                <SelectItem value="pineapple">Pineapple</SelectItem>
+                                </SelectGroup>
+                            </SelectContent>
+                            </Select>
                         {errors?.library && <ErrorMessage message={errors.library}/>}
                     </div>
                     <div>
@@ -120,7 +142,7 @@ const Register = () => {
                     <Button  type="submit" className="mt-6 flex items-center justify-center w-24 font-semibold">Sign Up</Button>
                 </form>
             <span className="text-sm  -ml-32">Already have an account? <Link className="text-blue-700 font-semibold" to={"/"}> Sign In</Link> </span>
-            <footer className="absolute text-xs text-gray-500 bottom-5 w-[94%] border-t-2 border-gray-200 px-5 flex items-center justify-between h-10"> 
+            <footer className="absolute text-xs text-gray-500 bottom-0 w-[94%] border-t-2 border-gray-200 px-5 py-8 flex items-center justify-between h-10"> 
                 <span>&copy; 2024-2025</span>
                 <div className=" flex gap-4"> 
                     <Link to={"/"}>Privacy policy</Link>

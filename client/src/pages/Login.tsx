@@ -55,7 +55,7 @@ const Login = () => {
 
 
   return (
-    <div className="w-full h-screen  flex ">
+    <div className="w-full max-w-[1920px] mx-auto  h-screen  flex ">
         <div className="w-[50%] flex flex-col relative px-0 items-center justify-center "> 
             <div className="flex flex-col  w-[50%] text-left items-center  gap-6">
                 <h1 className="text-4xl font-bold -ml-[84px] ">Welcome back</h1>  
@@ -70,7 +70,7 @@ const Login = () => {
                         <Label>Password</Label>
                         <Input value={user?.password} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setUser({ ...user, password: e.target.value })} type={showPassword?"password":"text"} placeholder="*********"></Input>
                         {errors?.password && <ErrorMessage message={errors.password}/>}
-                        <span  onClick={()=>setShowPassword(prev=>!prev)} className="absolute cursor-pointer top-[30px] right-3">
+                        <span  onClick={()=>setShowPassword(prev=>!prev)} className="absolute text-gray-500 cursor-pointer top-[30px] right-3">
 
                         {
                             showPassword?<EyeClosedIcon />:<EyeIcon/>
@@ -82,7 +82,7 @@ const Login = () => {
                 </form>
             <span className="text-sm -ml-36 ">Dont have an account? <Link className="text-blue-700 font-semibold" to={"/register"}>Sign Up</Link> </span>
             </div>
-            <footer className="absolute text-xs text-gray-500 bottom-5 w-[94%] border-t-2 border-gray-200 px-5 flex items-center justify-between h-10"> 
+            <footer className="absolute text-xs text-gray-500 bottom-0 w-[94%] border-t-2 border-gray-200 px-5 py-8 flex items-center justify-between h-10"> 
                 <span>&copy; 2024-2025</span>
                 <div className=" flex gap-4"> 
                     <Link to={"/"}>Privacy policy</Link>
