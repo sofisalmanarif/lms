@@ -1,13 +1,17 @@
-import { Button } from "./components/ui/button"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+
+import Login from "./pages/Login"
 
 function App() {
 
 
   return (
-    <div className="bg-red-200"> 
-      lms
-      <Button> salman</Button>
-    </div>
+    <BrowserRouter>
+      <Routes>
+          <Route path="/" element={<Login/>}/>
+
+      </Routes>
+    </BrowserRouter>
   )
 }
 
