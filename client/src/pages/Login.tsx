@@ -59,6 +59,7 @@ const Login = () => {
             <div className="flex flex-col w-[50%]  gap-10">
                 <h1 className="text-4xl font-bold ">Welcome back</h1>
                 <form onSubmit={loginHandler}  className="flex w-[70%] flex-col gap-4 ">
+                    
                     <div>
                         <Label>Email</Label>
                         <Input value={user?.email} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setUser({ ...user, email: e.target.value })} type="email" placeholder="example@gmail.com"></Input>
@@ -78,7 +79,7 @@ const Login = () => {
                     <Link className="text-blue-700 text-xs" to={"/"}>Forgot Password</Link>
                     <Button  type="submit" className="mt-6 flex items-center justify-center w-24">Sign In</Button>
                 </form>
-            <span className="text-sm">Dont have an account? <Link className="text-blue-700" to={"/"}>Sign Up</Link> </span>
+            <span className="text-sm">Dont have an account? <Link className="text-blue-700" to={"/register"}>Sign Up</Link> </span>
             
             </div>
         </div>
