@@ -1,3 +1,4 @@
+import AuthSideBar from "@/components/ui/AuthSideBar"
 import { Button } from "@/components/ui/button"
 import ErrorMessage from "@/components/ui/ErrorMessage"
 import { Input } from "@/components/ui/input"
@@ -45,7 +46,7 @@ const Login = () => {
                     newErrors[err.path as keyof UserType] = err.message;
                   }
                 });
-                console.log(newErrors);
+                // console.log(newErrors);
                 setErrors(newErrors);
               }
         }
@@ -55,9 +56,9 @@ const Login = () => {
 
   return (
     <div className="w-full h-screen  flex ">
-        <div className="w-[50%] flex items-center justify-center "> 
-            <div className="flex flex-col w-[50%]  gap-10">
-                <h1 className="text-4xl font-bold ">Welcome back</h1>
+        <div className="w-[50%] flex flex-col relative px-0 items-center justify-center "> 
+            <div className="flex flex-col  w-[50%] text-left items-center  gap-6">
+                <h1 className="text-4xl font-bold -ml-[84px] ">Welcome back</h1>  
                 <form onSubmit={loginHandler}  className="flex w-[70%] flex-col gap-4 ">
                     
                     <div>
@@ -77,15 +78,21 @@ const Login = () => {
                         </span>
                     </div>
                     <Link className="text-blue-700 text-xs" to={"/"}>Forgot Password</Link>
-                    <Button  type="submit" className="mt-6 flex items-center justify-center w-24">Sign In</Button>
+                    <Button  type="submit" className="mt-6 flex items-center justify-center w-24 font-semibold">Sign In</Button>
                 </form>
-            <span className="text-sm">Dont have an account? <Link className="text-blue-700" to={"/register"}>Sign Up</Link> </span>
-            
+            <span className="text-sm -ml-36 ">Dont have an account? <Link className="text-blue-700 font-semibold" to={"/register"}>Sign Up</Link> </span>
             </div>
+            <footer className="absolute text-xs text-gray-500 bottom-5 w-[94%] border-t-2 border-gray-200 px-5 flex items-center justify-between h-10"> 
+                <span>&copy; 2024-2025</span>
+                <div className=" flex gap-4"> 
+                    <Link to={"/"}>Privacy policy</Link>
+                    <Link to={"/"}> Terms and Conditions</Link>
+                </div>
+            
+            </footer>
         </div>
-        <div className="w-[50%] flex items-center justify-start "> 
-            <img src="../../public/undraw_secure_login_pdn4.svg" alt="" />
-        </div>
+        <AuthSideBar/>
+
 
     </div>
   )
