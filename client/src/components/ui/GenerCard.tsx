@@ -1,6 +1,5 @@
 import {
   Card,
-  CardHeader,
   CardTitle,
 } from "@/components/ui/card"
 import { BookOpen } from "lucide-react"

@@ -8,7 +8,7 @@ const Navbar = () => {
       <div className="flex items-center  justify-between  backdrop-blur-md px-2 sm:px-20 py-3">
         <div className="flex items-center justify-center  gap-2 ">
           <div className="bg-orange-500 sm:h-10 p-1 sm:w-10 h-8 w-8 flex items-center justify-center rounded-full text-white"><BookOpen size={20} /></div>
-          <h1 className="sm:text-3xl text-xl sm:mt-3 text-orange-500">
+          <h1 className="sm:text-3xl sm:block hidden sm:mt-3 text-orange-500">
             Logo</h1>
 
 
