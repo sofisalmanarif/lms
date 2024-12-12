@@ -1,7 +1,7 @@
 
 const AuthSideBar = () => {
     return (
-        <div className="w-[50%] relative  bg-[radial-gradient(circle,_rgba(251,146,60,.7)_20%,_rgba(255,237,213,0.3)_90%,_transparent_10%)] flex items-center justify-start">
+        <div className="sm:w-[50%]  hidden relative  bg-[radial-gradient(circle,_rgba(251,146,60,.7)_20%,_rgba(255,237,213,0.3)_90%,_transparent_10%)] sm:flex items-center justify-start">
 
             <div className="w-full relative p-20 pt-28 h-screen backdrop-blur-3xl z-10">
                 <h1 className=" leading-none text-[54px]  font-extrabold">Thousands of books, <br /> Unlimited potential</h1>

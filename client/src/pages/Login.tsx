@@ -57,9 +57,9 @@ const Login = () => {
 
   return (
     <div className="w-full max-w-[1920px] mx-auto  h-screen  flex ">
-        <div className="w-[50%] flex flex-col relative px-0 items-center justify-center "> 
-            <div className="flex flex-col  w-[50%] text-left items-center  gap-6">
-                <h1 className="text-4xl font-bold -ml-[84px] ">Welcome back</h1>  
+        <div className="sm:w-[50%] w-full flex flex-col relative px-0 items-center justify-center "> 
+            <div className="flex flex-col  sm:w-[50%] w-full text-left items-center  gap-6">
+                <h1 className="text-4xl font-bold sm:-ml-[84px] -ml-[36px] ">Welcome back</h1>  
                 <form onSubmit={loginHandler}  className="flex w-[70%] flex-col gap-4 ">
                     
                     <div>
@@ -81,7 +81,7 @@ const Login = () => {
                     <Link className="text-blue-700 text-xs" to={"/"}>Forgot Password</Link>
                     <Button  type="submit" className="mt-6 flex items-center justify-center w-24 font-semibold">Sign In</Button>
                 </form>
-            <span className="text-sm -ml-36 ">Dont have an account? <Link className="text-blue-700 font-semibold" to={"/register"}>Sign Up</Link> </span>
+            <span className="text-sm sm:-ml-36 ">Dont have an account? <Link className="text-blue-700 font-semibold" to={"/register"}>Sign Up</Link> </span>
             </div>
             <AuthFooter/>
         </div>
