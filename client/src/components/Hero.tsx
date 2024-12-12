@@ -10,7 +10,7 @@ const Hero = () => {
                 <div className="sm:w-[50%] w-[90%] bg-white flex sm:h-12 h-10 rounded-md items-center pl-4">
                     <SearchIcon size={24} color="gray" />
                     <Input
-                        className="py-2 mt-1 px-4 flex items-center rounded-none border-none shadow-none focus:ring-0 focus:ring-offset-0 focus:border-none focus:outline-none focus-visible:ring-0"
+                        className="py-2 sm:mt-1 mt-0 px-4 flex items-center rounded-none border-none shadow-none focus:ring-0 focus:ring-offset-0 focus:border-none focus:outline-none focus-visible:ring-0"
                         placeholder="Search"
                     />
 
