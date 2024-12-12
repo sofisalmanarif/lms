@@ -13,8 +13,8 @@ const Navbar = () => {
 
 
         </div>            
-         <section className=" h-full flex gap-4 sm:gap-10 items-center">
-          <Link to={"/login"} className="text-gray-500 sm:text-lg text-md hover:text-black ease-in-out duration-300">Contact Us</Link>
+         <section className=" h-full flex gap-4 sm:gap-10 items-center justify-center">
+          <Link to={"/login"} className="text-gray-500 sm:text-lg text-sm hover:text-black ease-in-out mt-2 duration-300">Contact Us</Link>
           <div className="sm:h-12 sm:w-12 h-8 w-8 rounded-full bg-orange overflow-hidden">
             <img src="https://github.com/shadcn.png" alt="" />
           </div>

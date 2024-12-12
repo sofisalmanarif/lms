@@ -79,9 +79,9 @@ const Register = () => {
 
   return (
     <div className="w-full h-screen  flex ">
-        <div className="w-[50%] relative flex items-center justify-center "> 
-            <div className="flex  flex-col w-[50%]  text-left items-center  gap-6">
-                <h1 className="text-4xl font-bold  text-left -ml-[186px]">Register</h1>
+        <div className="sm:w-[50%] w-full relative flex items-center justify-center "> 
+            <div className="flex  flex-col sm:w-[50%] w-[90%] text-left items-center  gap-6">
+                <h1 className="text-4xl font-bold  text-left sm:-ml-[186px] -ml-[120px]">Register</h1>
                 <form onSubmit={loginHandler}  className="flex w-[70%] flex-col gap-4 ">
                 <div>
                         <Label>Username</Label>
@@ -140,9 +140,9 @@ const Register = () => {
                         </span>
                     </div> */}
                     {/* <Link className="text-blue-700 text-xs" to={"/"}>Forgot Password</Link> */}
-                    <Button  type="submit" className="mt-6 flex items-center justify-center w-24 font-semibold">Sign Up</Button>
+                    <Button  type="submit" className="sm:mt-6 mt-2 flex items-center justify-center sm:w-24 w-20 font-semibold">Sign Up</Button>
                 </form>
-            <span className="text-sm  -ml-32">Already have an account? <Link className="text-blue-700 font-semibold" to={"/login"}> Sign In</Link> </span>
+            <span className="text-sm  sm:-ml-32">Already have an account? <Link className="text-blue-700 font-semibold" to={"/login"}> Sign In</Link> </span>
             <AuthFooter/>
             </div>
         </div>

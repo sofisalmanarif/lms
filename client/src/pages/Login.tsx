@@ -79,7 +79,7 @@ const Login = () => {
                         </span>
                     </div>
                     <Link className="text-blue-700 text-xs" to={"/"}>Forgot Password</Link>
-                    <Button  type="submit" className="mt-6 flex items-center justify-center w-24 font-semibold">Sign In</Button>
+                    <Button  type="submit" className="sm:mt-6 mt-2 flex items-center justify-center sm:w-24 w-20 font-semibold">Sign In</Button>
                 </form>
             <span className="text-sm sm:-ml-36 ">Dont have an account? <Link className="text-blue-700 font-semibold" to={"/register"}>Sign Up</Link> </span>
             </div>
