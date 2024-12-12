@@ -6,7 +6,7 @@ import { Input } from "./ui/input"
 const Hero = () => {
     return (
         <section className='sm:h-[60vh] h-[40vh] w-full bg-[radial-gradient(circle,_rgba(251,146,60,.7)_10%,_rgba(255,237,213,0.3)_100%,_transparent_10%)]'>
-            <div className='h-full w-full backdrop-blur-3xl flex flex-col items-center justify-center gap-14'>
+            <div className='h-full w-full backdrop-blur-3xl flex flex-col items-center justify-center sm:gap-14 gap-6'>
                 <div className="sm:w-[50%] w-[90%] bg-white flex sm:h-12 h-10 rounded-md items-center pl-4">
                     <SearchIcon size={24} color="gray" />
                     <Input
