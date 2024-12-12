@@ -1,4 +1,4 @@
-import AuthSideBar from "@/components/ui/AuthSideBar"
+import AuthSideBar from "@/components/AuthSideBar"
 import { Button } from "@/components/ui/button"
 import ErrorMessage from "@/components/ui/ErrorMessage"
 import { Input } from "@/components/ui/input"
@@ -16,7 +16,7 @@ import {
 import { useState } from "react"
 import { Link } from "react-router-dom"
 import  * as yup from "yup"
-import AuthFooter from "@/components/ui/AuthFooter"
+import AuthFooter from "@/components/AuthFooter"
 
 
 type UserType = {

@@ -1,5 +1,5 @@
-import AuthFooter from "@/components/ui/AuthFooter"
-import AuthSideBar from "@/components/ui/AuthSideBar"
+import AuthFooter from "@/components/AuthFooter"
+import AuthSideBar from "@/components/AuthSideBar"
 import { Button } from "@/components/ui/button"
 import ErrorMessage from "@/components/ui/ErrorMessage"
 import { Input } from "@/components/ui/input"
