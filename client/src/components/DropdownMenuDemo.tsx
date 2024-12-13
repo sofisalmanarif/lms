@@ -5,7 +5,6 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
-  DropdownMenuShortcut,
   
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
@@ -24,13 +23,13 @@ export function DropdownMenuDemo({children}:{children:React.ReactNode}) {
          <Link to={"/profile"}>
          <DropdownMenuItem>
             Profile
-            <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+            {/* <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut> */}
           </DropdownMenuItem>
          </Link>
          <Link to={"/my-borrowings"}>
           <DropdownMenuItem>
             Borrowings
-            <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
+            {/* <DropdownMenuShortcut>⌘B</DropdownMenuShortcut> */}
           </DropdownMenuItem>
          </Link>
          
@@ -44,7 +43,7 @@ export function DropdownMenuDemo({children}:{children:React.ReactNode}) {
         <DropdownMenuSeparator />
         <DropdownMenuItem>
           Log out
-          <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
+          {/* <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut> */}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
