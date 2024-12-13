@@ -71,7 +71,7 @@ function BorrowingBookCard(){
   return(
     <div className="sm:w-[400px] sm:max-w-[400px] min-w-[200px] max-w-[200px]  flex flex-col gap-2 ">
       <div className={`flex items-center  w-[100%] justify-center bg-[#B9CFED] rounded-3xl py-4 shadow-sm`}>
-        <img src="../../public/book.png" alt="" />
+        <img src="/book.png" alt="" />
 
       </div>
       <div>
