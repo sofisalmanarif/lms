@@ -9,12 +9,12 @@ import { TableDemo } from "./TableDemo"
 
 export function ProfileTabs() {
   return (
-    <Tabs defaultValue="account" className="w-full">
-      <TabsList className="grid w-[200px] -ml-4 bg-white grid-cols-2">
+    <Tabs defaultValue="reservations" className="w-full">
+      <TabsList className="grid w-[200px] -ml-3 px-0 bg-white grid-cols-2">
+        <TabsTrigger value="reservations" className="sm:px-0 px-0">Reservations</TabsTrigger>
         <TabsTrigger value="borrowings">Borrowings</TabsTrigger>
-        <TabsTrigger value="reservations">Reservations</TabsTrigger>
       </TabsList>
-      {/* <p className="border-b-[1px] border-gray-200 sm:mb-4"></p> */}
+      <p className="border-b-[1px] border-gray-200 sm:mb-4"></p>
       <TabsContent value="borrowings">
         
                     

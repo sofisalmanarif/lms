@@ -11,25 +11,25 @@ import { Button } from "./ui/button"
   
   const invoices = [
     {
-      img: "../../public/book.png",
+      img: "/book.png",
       bookName: "You don't know js",
       bookingTime: "10:21",
       RemaningTime: "21 min",
     },
     {
-        img: "../../public/book.png",
+        img: "/book.png",
         bookName: "You don't know js",
         bookingTime: "10:21",
         RemaningTime: "21 min",
       },
       {
-        img: "../../public/book.png",
+        img: "/book.png",
         bookName: " js",
         bookingTime: "10:21",
         RemaningTime: "21 min",
       },
       {
-        img: "../../public/book.png",
+        img: "/book.png",
         bookName: "You don't know js",
         bookingTime: "10:21",
         RemaningTime: "21 min",
