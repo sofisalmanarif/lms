@@ -39,7 +39,7 @@ const Profile = () => {
           <section className="sm:px-20 px-4 sm:mt-10  mt-2 flex flex-col w-full  gap-2">
             <h4 className="text-sm text-gray-600 font-semibold">Borrowed Books</h4>
             <p className="border-b-[1px] border-b-gray-200 mb-4"></p>
-            <div className="flex sm:gap-6 sm:px-1 px-0 gap-4 w-full py-1  overflow-x-scroll scrollbar-hide">
+            <div className="flex sm:justify-betweenbug sm:px-1 px-0 gap-4 w-full py-1  overflow-x-scroll scrollbar-hide">
   <BorrowingBookCard />
   <BorrowingBookCard />
   <BorrowingBookCard />
@@ -69,7 +69,7 @@ function Counts({heading,count}:{heading:string,count:string}){
 
 function BorrowingBookCard(){
   return(
-    <div className="sm:w-[500px] min-w-[200px] max-w-[200px]  flex flex-col gap-2 ">
+    <div className="sm:w-[400px] sm:max-w-[400px] min-w-[200px] max-w-[200px]  flex flex-col gap-2 ">
       <div className={`flex items-center  w-[100%] justify-center bg-[#B9CFED] rounded-3xl py-4 shadow-sm`}>
         <img src="../../public/book.png" alt="" />
 
