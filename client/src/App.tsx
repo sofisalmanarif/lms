@@ -8,6 +8,7 @@ import ShowNavbar from "./components/ShowNavbar"
 import Contact from "./pages/Contact"
 import BookDetails from "./pages/BookDetails"
 import GenerPage from "./pages/GenerPage"
+import Profile from "./pages/Profile"
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
           <Route path="/contact" element={<Contact/>}></Route>
           <Route path="/book/:id" element={<BookDetails/>}></Route>
           <Route path="/gener/:name" element={<GenerPage/>}></Route>
+          <Route path="/profile" element={<Profile/>}></Route>
 
       </Routes>
     </BrowserRouter>

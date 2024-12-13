@@ -1,5 +1,6 @@
 import { BookOpen } from "lucide-react"
 import { Link, NavLink } from "react-router-dom"
+import { DropdownMenuDemo } from "./DropdownMenuDemo"
 
 
 const Navbar = () => {
@@ -15,11 +16,13 @@ const Navbar = () => {
         </Link>            
          <section className=" h-full flex gap-4 sm:gap-10 items-center justify-center">
           <Link to={"/contact"} className="text-gray-500 sm:text-lg text-sm hover:text-black ease-in-out sm:mt-1 mt-1 duration-300">Contact Us</Link>
+          <DropdownMenuDemo>
           <div className="sm:h-12 sm:w-12 h-8 w-8 rounded-full bg-orange overflow-hidden">
-            <Link to={'/login'}>
+            <Link to={'/profile'}>
             <img src="https://github.com/shadcn.png" alt="" />
             </Link>
           </div>
+            </DropdownMenuDemo>
 
         </section>
       </div>
