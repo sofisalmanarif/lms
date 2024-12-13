@@ -6,6 +6,8 @@ import Home from "./pages/Home"
 import Navbar from "./components/Navbar"
 import ShowNavbar from "./components/ShowNavbar"
 import Contact from "./pages/Contact"
+import BookDetails from "./pages/BookDetails"
+import GenerPage from "./pages/GenerPage"
 
 function App() {
 
@@ -18,10 +20,12 @@ function App() {
     </ShowNavbar>
     
       <Routes>
-          <Route path="/" element={<Home/>}/>
           <Route path="/login" element={<Login/>}/>
           <Route path="/register" element={<Register/>}/>
+          <Route path="/" element={<Home/>}/>
           <Route path="/contact" element={<Contact/>}></Route>
+          <Route path="/book/:id" element={<BookDetails/>}></Route>
+          <Route path="/gener/:name" element={<GenerPage/>}></Route>
 
       </Routes>
     </BrowserRouter>
