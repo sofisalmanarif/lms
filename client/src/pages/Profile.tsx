@@ -12,7 +12,7 @@ const Profile = () => {
               <div className="flex items-center gap-10 justify-center sm:h-[350px] sm:w-[330px] -mt-24 z-30 h-[220px] w-[220px] sm:rounded-[60px] rounded-3xl backdrop-blur-2xl ">
                 <img src="https://github.com/shadcn.png" className="sm:h-[330px] sm:w-[310px] h-[200px] w-[200px] sm:rounded-[60px] rounded-3xl" alt="" />
                 </div>
-              <div className="text-sm text-center sm:text-left">
+              <div className="text-sm text-center sm:text-left sm:pb-6 pb-0 pl-4">
                 <p className="sm:text-4xl  text-3xl font-semibold">Sofi Salman</p>
                 <p className="text-gray-500">Sofisalman9906@gmail.com</p>
                 <p className="text-gray-500">lelafe</p>
