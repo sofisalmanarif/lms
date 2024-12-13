@@ -8,7 +8,7 @@ const BookDetails = () => {
         <div className='flex items-start justify-start flex-col sm:flex-row sm:p-8 p-2 sm:border-[1px] border-0 border-gray-200 rounded-md
         gap-4'>
         <div className='sm:w-[40%] sm:h-[40vh] w-full h-[30vh] border-[1px] border-gray-200 rounded-md flex  items-center justify-center'> 
-            <img src="/public/book.png" alt="" />
+            <img src="/book.png" alt="" />
         </div>
         <div className='sm:w-[60%] w-full relative'>
             <div className='sm:pr-20 pr-5 border-b-[1px] border-gray-300 sm:pb-10 pb-4 py-2 sm:mb-10 mb-6' >
