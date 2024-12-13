@@ -1,3 +1,4 @@
+import { ChangePasswordDialog } from "@/components/ChangePasswordDialog"
 import { Button } from "@/components/ui/button"
 
 const Profile = () => {
@@ -18,7 +19,10 @@ const Profile = () => {
                 <p className="text-gray-500">lelafe</p>
                 <div className="flex gap-4 mt-4">
                   <Button>Edit Profile</Button>
+                  <ChangePasswordDialog id={"salman"}>
+
                   <Button variant={"outline"} > Forgot Password</Button>
+                  </ChangePasswordDialog>
                 </div>
               </div>
             </div>

@@ -5,12 +5,14 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
-  
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { useState } from "react"
 import { Link } from "react-router-dom"
 
 export function DropdownMenuDemo({children}:{children:React.ReactNode}) {
+
+  const [isAdmin,] = useState<boolean>(true)
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -21,29 +23,30 @@ export function DropdownMenuDemo({children}:{children:React.ReactNode}) {
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
          <Link to={"/profile"}>
-         <DropdownMenuItem>
+         <DropdownMenuItem className="flex items-center">
+          {/* <User2Icon/> */}
             Profile
-            {/* <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut> */}
           </DropdownMenuItem>
+          {isAdmin &&<DropdownMenuItem>
+            {/* <LayoutDashboardIcon/> */}
+            Dashboard
+          </DropdownMenuItem>}
          </Link>
          <Link to={"/my-borrowings"}>
           <DropdownMenuItem>
             Borrowings
-            {/* <DropdownMenuShortcut>⌘B</DropdownMenuShortcut> */}
+            
           </DropdownMenuItem>
          </Link>
          
           
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-       
-        <DropdownMenuSeparator />
         <DropdownMenuItem>My Library</DropdownMenuItem>
         
         <DropdownMenuSeparator />
         <DropdownMenuItem>
           Log out
-          {/* <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut> */}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
