@@ -39,7 +39,7 @@ const Profile = () => {
           <section className="sm:px-20 px-4 sm:mt-10  mt-2 flex flex-col w-full  gap-2">
             <h4 className="text-sm text-gray-600 font-semibold">Borrowed Books</h4>
             <p className="border-b-[1px] border-b-gray-200 mb-4"></p>
-            <div className="flex sm:justify-betweenbug sm:px-1 px-0 gap-4 w-full py-1  overflow-x-scroll scrollbar-hide">
+            <div className="flex sm:justify-between sm:px-1 px-0 gap-4 w-full py-1  overflow-x-scroll scrollbar-hide">
   <BorrowingBookCard />
   <BorrowingBookCard />
   <BorrowingBookCard />
