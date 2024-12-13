@@ -9,8 +9,8 @@ import { Link } from "react-router-dom"
 
 const BookCard = () => {
     return (
-        <Card className="sm:w-[300px] min-w-[170px] p-2 sm:pb-4">
-          <Link to={"/book/1"} className="sm:h-44 h-24  flex items-center justify-between">
+        <Card className="sm:w-[300px] sm:max-w-[300px] min-w-[170px] max-w-[170px]  mb-4 p-2 sm:pb-4 ">
+          <Link to={"/book/1"} className="sm:h-44 h-24 w-full  flex items-center justify-between">
 
             <img src="/book.png" className="sm:h-36 sm:w-full h-20 w-full" alt="" />
           </Link>
