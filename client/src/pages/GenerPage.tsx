@@ -3,8 +3,8 @@ import BookCard from '@/components/BookCard'
 
 const GenerPage = () => {
   return (
-    <div className='container mx-auto'>
-        <div className='grid grid-cols-4 mb-4'>
+    <div className='sm:container sm:mx-auto px-2 w-full'>
+        <div className='grid sm:grid-cols-4 mb-4 grid-cols-2'>
             <BookCard/>
             <BookCard/>
             <BookCard/>
