@@ -7,7 +7,7 @@ const BookDetails = () => {
     <main className='container mx-auto'>
         <div className='flex items-start justify-start flex-col sm:flex-row sm:p-8 p-2 sm:border-[1px] border-0 border-gray-200 rounded-md
         gap-4'>
-        <div className='sm:w-[40%] h-[40vh] w-full  border-[1px] border-gray-200 rounded-md flex  items-center justify-center'> 
+        <div className='sm:w-[40%] sm:h-[40vh] w-full h-[30vh] border-[1px] border-gray-200 rounded-md flex  items-center justify-center'> 
             <img src="../../public/book.png" alt="" />
         </div>
         <div className='sm:w-[60%] w-full relative'>
