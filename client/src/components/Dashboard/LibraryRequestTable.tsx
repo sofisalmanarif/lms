@@ -35,8 +35,8 @@ import {
 } from "@/components/ui/table"
 
 const data: Library[] = [
-    { id: "jehyerwu7", img:"../../../public/book.png", name: "Salman", email: "salman@gmail.com", licenceNo: 73774674, location: "Karachi" },
-    { id: "aiwopei28",img:"../../../public/book.png", name: "Aisha", email: "aisha@example.com", licenceNo: 83927541, location: "Lahore" },
+    { id: "jehyerwu7", img:"/book.png", name: "Salman", email: "salman@gmail.com", licenceNo: 73774674, location: "Karachi" },
+    { id: "aiwopei28",img:"/book.png", name: "Aisha", email: "aisha@example.com", licenceNo: 83927541, location: "Lahore" },
     
   ]
 
