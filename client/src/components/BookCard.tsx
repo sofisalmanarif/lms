@@ -9,7 +9,7 @@ import { Link } from "react-router-dom"
 
 const BookCard = () => {
     return (
-        <Card className="md:w-[16vw] md:max-w-[16vw] min-w-[170px] max-w-[45vw]   md:max-h-[40vh] place-items-stretch mb-4 p-2 sm:pb-4 ">
+        <Card className="md:w-[16vw] md:max-w-[18vw] min-w-[170px]  max-w-[45vw]    md:max-h-[50vh] place-items-stretch mb-4 p-2 sm:pb-4 ">
           <Link to={"/book/1"} className="md:h-[10vw] h-24 w-full bg-gray-300/50  rounded-md flex items-center justify-between">
 
             <img src="/book.png" className="md:h-[8vw] md:w-full h-20 w-full" alt="" />
