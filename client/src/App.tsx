@@ -9,6 +9,9 @@ import Contact from "./pages/Contact"
 import BookDetails from "./pages/BookDetails"
 import GenerPage from "./pages/GenerPage"
 import Profile from "./pages/Profile"
+import { Dashboard } from "./pages/Superadmin/Dashboard"
+import { SuperAdminLibraries } from "./pages/Superadmin/SuperAdminLibraries"
+import { NewLibraryRequest } from "./pages/Superadmin/NewLibraryRequset"
 
 function App() {
 
@@ -28,6 +31,10 @@ function App() {
           <Route path="/book/:id" element={<BookDetails/>}></Route>
           <Route path="/gener/:name" element={<GenerPage/>}></Route>
           <Route path="/profile" element={<Profile/>}></Route>
+          <Route path="/dashboard" element={<Dashboard/>}></Route>
+          <Route path="/dashboard/libraries" element={<SuperAdminLibraries/>}></Route>
+          <Route path="/dashboard/new-library" element={<NewLibraryRequest/>}></Route>
+          
 
       </Routes>
     </BrowserRouter>

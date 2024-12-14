@@ -22,16 +22,18 @@ export function DropdownMenuDemo({children}:{children:React.ReactNode}) {
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-         <Link to={"/profile"}>
+         <Link to={"/dashboard"}>
          <DropdownMenuItem className="flex items-center">
           {/* <User2Icon/> */}
             Profile
           </DropdownMenuItem>
-          {isAdmin &&<DropdownMenuItem>
+          </Link>
+          {isAdmin &&
+          
+          <DropdownMenuItem>
             {/* <LayoutDashboardIcon/> */}
             Dashboard
           </DropdownMenuItem>}
-         </Link>
          <Link to={"/my-borrowings"}>
           <DropdownMenuItem>
             Borrowings
