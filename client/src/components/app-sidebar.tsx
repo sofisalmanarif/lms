@@ -1,10 +1,10 @@
 import * as React from "react"
 import {
-  
-  BookOpen,
-  Bot,
+ 
+  Library,
   LucideLayoutDashboard,
   Settings2,
+  Users,
   
 } from "lucide-react"
 
@@ -37,12 +37,12 @@ const data = {
     {
       title: "Libraries",
       url: "/dashboard/libraries",
-      icon: Bot,
+      icon: Library ,
     },
     {
       title: "Admins",
       url: "/",
-      icon: BookOpen,
+      icon: Users ,
     },
     {
       title: "Requests",
@@ -55,7 +55,7 @@ const data = {
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
-    <Sidebar collapsible="icon" {...props} className="mt-20 h-[92vh] ml-20">
+    <Sidebar collapsible="icon" {...props} className="mt-20 h-[92vh] ml-20 bg-red-400">
       <SidebarHeader>
       </SidebarHeader>
       <SidebarContent>
