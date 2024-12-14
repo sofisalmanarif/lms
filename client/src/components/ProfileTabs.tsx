@@ -5,7 +5,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/ui/tabs"
-import { TableDemo } from "./TableDemo"
+import { ReservationTable } from "./ReservationTable"
 
 export function ProfileTabs() {
   return (
@@ -27,7 +27,7 @@ export function ProfileTabs() {
 
       </TabsContent>
       <TabsContent value="reservations">
-        <TableDemo/> 
+        <ReservationTable/> 
       </TabsContent>
     </Tabs>
   )

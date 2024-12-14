@@ -37,7 +37,7 @@ import { Button } from "./ui/button"
     
   ]
   
-  export function TableDemo() {
+  export function ReservationTable() {
     return (
       <Table>
         {/* <TableCaption>A list of your recent invoices.</TableCaption> */}

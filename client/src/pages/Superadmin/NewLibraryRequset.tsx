@@ -29,7 +29,7 @@ export function NewLibraryRequest() {
           </div>
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
-          <h1 className="text-4xl text-orange-500">New Requests</h1>
+          <h1 className="sm:text-4xl text-2xl text-orange-500">New Requests</h1>
           <LinraryRequestTable/>
         </div>
       </SidebarInset>

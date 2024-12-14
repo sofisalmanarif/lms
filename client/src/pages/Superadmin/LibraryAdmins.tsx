@@ -1,13 +1,12 @@
 import { AppSidebar } from "@/components/app-sidebar"
-
-import { LibraryTable } from "@/components/Dashboard/LibraryTable"
+import { AdminLibraryTable } from "@/components/Dashboard/AdminLibraryTable"
 import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar"
 
-export function SuperAdminLibraries() {
+export function LibraryAdmins() {
   return (
     <div className="sm:px-20 px-4 mt-0 h-[90vh]">
     <SidebarProvider>
@@ -19,8 +18,8 @@ export function SuperAdminLibraries() {
           </div>
         </header>
         <div className="flex flex-1 flex-col sm:gap-4 gap-0 p-4 pt-0">
-          <h1 className="sm:text-4xl text-2xl  text-orange-500">Libraries</h1>
-          <LibraryTable/>
+          <h1 className="sm:text-4xl text-2xl  text-orange-500">Admins</h1>
+          <AdminLibraryTable/>
         </div>
       </SidebarInset>
     </SidebarProvider>

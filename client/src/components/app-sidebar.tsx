@@ -41,7 +41,7 @@ const data = {
     },
     {
       title: "Admins",
-      url: "/",
+      url: "/dashboard/library-admins",
       icon: Users ,
     },
     {
@@ -55,7 +55,7 @@ const data = {
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
-    <Sidebar collapsible="icon" {...props} className="mt-20 h-[92vh] ml-20 bg-red-400">
+    <Sidebar collapsible="icon" {...props} className="mt-20 h-[92vh] ml-20 ">
       <SidebarHeader>
       </SidebarHeader>
       <SidebarContent>

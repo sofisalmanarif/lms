@@ -35,14 +35,30 @@ import {
 } from "@/components/ui/table"
 
 const data: Library[] = [
-    { id: "jehyerwu7", img:"/book.png", name: "Salman", email: "salman@gmail.com", licenceNo: 73774674, location: "Karachi" },
-    { id: "aiwopei28",img:"/book.png", name: "Aisha", email: "aisha@example.com", licenceNo: 83927541, location: "Lahore" },
-    
+    { id: "jehyerwu7", name: "Salman", email: "salman@gmail.com", licenceNo: 73774674, location: "Karachi" },
+    { id: "aiwopei28", name: "Aisha", email: "aisha@example.com", licenceNo: 83927541, location: "Lahore" },
+    { id: "rtyesl003", name: "Ahmed", email: "ahmed@example.com", licenceNo: 12345987, location: "Islamabad" },
+    { id: "zpoieaw44", name: "Zara", email: "zara@example.com", licenceNo: 74930458, location: "Faisalabad" },
+    { id: "mnvoeap22", name: "Bilal", email: "bilal@example.com", licenceNo: 47285936, location: "Peshawar" },
+    { id: "weuriuq78", name: "Farah", email: "farah@example.com", licenceNo: 63572840, location: "Multan" },
+    { id: "xwerpas91", name: "Ali", email: "ali@example.com", licenceNo: 78239546, location: "Quetta" },
+    { id: "sdkepow88", name: "Hassan", email: "hassan@example.com", licenceNo: 84620571, location: "Sialkot" },
+    { id: "fgeirpa72", name: "Maria", email: "maria@example.com", licenceNo: 28374659, location: "Hyderabad" },
+    { id: "vnmseor61", name: "Omar", email: "omar@example.com", licenceNo: 56482901, location: "Rawalpindi" },
+    { id: "jwlpueas33", name: "Samina", email: "samina@example.com", licenceNo: 90384756, location: "Gujranwala" },
+    { id: "zcxwer88a", name: "Saad", email: "saad@example.com", licenceNo: 24563789, location: "Sukkur" },
+    { id: "vmsdoe45n", name: "Nadia", email: "nadia@example.com", licenceNo: 75893046, location: "Abbottabad" },
+    { id: "asdjke82o", name: "Hiba", email: "hiba@example.com", licenceNo: 92384657, location: "Bahawalpur" },
+    { id: "cvnmseq23", name: "Usman", email: "usman@example.com", licenceNo: 57638492, location: "Sargodha" },
+    { id: "qweopzx99", name: "Anum", email: "anum@example.com", licenceNo: 48263790, location: "Gilgit" },
+    { id: "bvcnxzq87", name: "Talha", email: "talha@example.com", licenceNo: 83629547, location: "Mardan" },
+    { id: "qweoiur44", name: "Irfan", email: "irfan@example.com", licenceNo: 59384627, location: "Muzaffarabad" },
+    { id: "asdkler12", name: "Sana", email: "sana@example.com", licenceNo: 63829475, location: "Jhelum" },
+    { id: "nbvczqp08", name: "Hafsa", email: "hafsa@example.com", licenceNo: 83729456, location: "Chitral" },
   ]
 
 export type Library = {
-  id: string,
-  img:string
+  id: string
   name: string
   email: string,
   licenceNo: number,
@@ -50,13 +66,7 @@ export type Library = {
 }
 
 export const columns: ColumnDef<Library>[] = [
-    {
-        accessorKey: "img",
-        header: "Valid Document",
-        cell: ({ row }) => (
-          <img src={row.getValue("img")} className="h-14"></img>
-        ),
-      },
+
   {
     accessorKey: "name",
     header: "Name",
@@ -99,8 +109,8 @@ export const columns: ColumnDef<Library>[] = [
     id: "actions",
     header: () => <div className="text-right">Action</div>,
     enableHiding: false,
-    cell: ({  }) => {
-
+    cell: ({ row }) => {
+      const library = row.original;
   
       return (
         <div className="flex justify-end">
@@ -113,11 +123,14 @@ export const columns: ColumnDef<Library>[] = [
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <DropdownMenuLabel>Actions</DropdownMenuLabel>
-              
+              <DropdownMenuItem
+                onClick={() => navigator.clipboard.writeText(library.id)}
+              >
+                Copy library ID
+              </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem>View Details</DropdownMenuItem>
-              <DropdownMenuItem className="text-blue-400 hover:text-green-500">Accept</DropdownMenuItem>
-              <DropdownMenuItem className="text-red-400 hover:text-red-500">Raject</DropdownMenuItem>
+              <DropdownMenuItem className="text-red-400 hover:text-red-500">Remove</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
@@ -126,7 +139,7 @@ export const columns: ColumnDef<Library>[] = [
   }
 ]
 
-export function LinraryRequestTable() {
+export function LibraryTable() {
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -138,6 +151,7 @@ export function LinraryRequestTable() {
   const table = useReactTable({
     data,
     columns,
+    rowCount:2,
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
     getCoreRowModel: getCoreRowModel(),
@@ -151,12 +165,13 @@ export function LinraryRequestTable() {
       columnFilters,
       columnVisibility,
       rowSelection,
+
     },
   })
 
   return (
     <div className="w-full">
-      <div className="flex items-center py-4">
+      <div className="flex items-center py-2">
         <Input
           placeholder="Search Library By Name..."
           value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}

@@ -12,6 +12,7 @@ import Profile from "./pages/Profile"
 import { Dashboard } from "./pages/Superadmin/Dashboard"
 import { SuperAdminLibraries } from "./pages/Superadmin/SuperAdminLibraries"
 import { NewLibraryRequest } from "./pages/Superadmin/NewLibraryRequset"
+import { LibraryAdmins } from "./pages/Superadmin/LibraryAdmins"
 
 function App() {
 
@@ -34,6 +35,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard/>}></Route>
           <Route path="/dashboard/libraries" element={<SuperAdminLibraries/>}></Route>
           <Route path="/dashboard/new-library" element={<NewLibraryRequest/>}></Route>
+          <Route path="/dashboard/library-admins" element={<LibraryAdmins/>}></Route>
           
 
       </Routes>
