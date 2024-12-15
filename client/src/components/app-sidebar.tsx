@@ -17,6 +17,7 @@ import {
   SidebarFooter,
   SidebarHeader,
   SidebarRail,
+  SidebarTrigger,
 } from "@/components/ui/sidebar"
 
 // This is sample data.
@@ -55,8 +56,14 @@ const data = {
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
-    <Sidebar collapsible="icon" {...props} className="mt-20 h-[92vh] ml-20 ">
+    <Sidebar collapsible="icon" {...props} className="mt-[7svh] bg-red-300 h-[93vh]  ml-20 ">
       <SidebarHeader>
+        <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
+                  <div className="flex items-start gap-0 px-1">
+                    <SidebarTrigger className="" />
+                   
+                  </div>
+                </header>
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />

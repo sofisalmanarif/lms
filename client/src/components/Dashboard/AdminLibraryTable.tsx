@@ -2,6 +2,7 @@ import * as React from "react"
 import {
   ColumnDef,
   ColumnFiltersState,
+  PaginationState,
   SortingState,
   VisibilityState,
   flexRender,
@@ -147,11 +148,15 @@ export function AdminLibraryTable() {
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>({})
   const [rowSelection, setRowSelection] = React.useState({})
+  const [pagination, setPagination] = React.useState<PaginationState>({
+        pageIndex: 0,
+        pageSize: 5,
+      })
 
   const table = useReactTable({
     data,
     columns,
-    rowCount:2,
+   
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
     getCoreRowModel: getCoreRowModel(),
@@ -160,14 +165,18 @@ export function AdminLibraryTable() {
     getFilteredRowModel: getFilteredRowModel(),
     onColumnVisibilityChange: setColumnVisibility,
     onRowSelectionChange: setRowSelection,
+    onPaginationChange:setPagination,
     state: {
       sorting,
       columnFilters,
       columnVisibility,
       rowSelection,
+      pagination
 
     },
   })
+  console.log("Current Page Index:", table.getState().pagination.pageIndex);
+  console.log("admins Total Pages:", table.getPageCount());
 
   return (
     <div className="w-full">
@@ -178,7 +187,7 @@ export function AdminLibraryTable() {
           onChange={(event) =>
             table.getColumn("name")?.setFilterValue(event.target.value)
           }
-          className="max-w-sm"
+          className="max-w-sm bg-white"
         />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -207,7 +216,7 @@ export function AdminLibraryTable() {
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
-      <div className="rounded-md border">
+      <div className="rounded-md border bg-white px-2">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (

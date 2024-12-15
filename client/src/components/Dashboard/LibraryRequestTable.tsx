@@ -2,6 +2,7 @@ import * as React from "react"
 import {
   ColumnDef,
   ColumnFiltersState,
+  PaginationState,
   SortingState,
   VisibilityState,
   flexRender,
@@ -35,6 +36,18 @@ import {
 } from "@/components/ui/table"
 
 const data: Library[] = [
+    { id: "jehyerwu7", img:"/book.png", name: "Salman", email: "salman@gmail.com", licenceNo: 73774674, location: "Karachi" },
+    { id: "aiwopei28",img:"/book.png", name: "Aisha", email: "aisha@example.com", licenceNo: 83927541, location: "Lahore" },
+    { id: "jehyerwu7", img:"/book.png", name: "Salman", email: "salman@gmail.com", licenceNo: 73774674, location: "Karachi" },
+    { id: "aiwopei28",img:"/book.png", name: "Aisha", email: "aisha@example.com", licenceNo: 83927541, location: "Lahore" },
+    { id: "jehyerwu7", img:"/book.png", name: "Shahla", email: "salman@gmail.com", licenceNo: 73774674, location: "Karachi" },
+    { id: "aiwopei28",img:"/book.png", name: "aaahil", email: "aisha@example.com", licenceNo: 83927541, location: "Lahore" },
+    { id: "jehyerwu7", img:"/book.png", name: "ahmad", email: "salman@gmail.com", licenceNo: 73774674, location: "Karachi" },
+    { id: "aiwopei28",img:"/book.png", name: "Aisha", email: "aisha@example.com", licenceNo: 83927541, location: "Lahore" },
+    { id: "jehyerwu7", img:"/book.png", name: "Salman", email: "salman@gmail.com", licenceNo: 73774674, location: "Karachi" },
+    { id: "aiwopei28",img:"/book.png", name: "Aisha", email: "aisha@example.com", licenceNo: 83927541, location: "Lahore" },
+    { id: "jehyerwu7", img:"/book.png", name: "Salman", email: "salman@gmail.com", licenceNo: 73774674, location: "Karachi" },
+    { id: "aiwopei28",img:"/book.png", name: "Aisha", email: "aisha@example.com", licenceNo: 83927541, location: "Lahore" },
     { id: "jehyerwu7", img:"/book.png", name: "Salman", email: "salman@gmail.com", licenceNo: 73774674, location: "Karachi" },
     { id: "aiwopei28",img:"/book.png", name: "Aisha", email: "aisha@example.com", licenceNo: 83927541, location: "Lahore" },
     
@@ -134,6 +147,12 @@ export function LinraryRequestTable() {
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>({})
   const [rowSelection, setRowSelection] = React.useState({})
+  const [pagination, setPagination] = React.useState<PaginationState>({
+    pageIndex: 0,
+    pageSize: 5,
+  })
+
+  
 
   const table = useReactTable({
     data,
@@ -146,13 +165,17 @@ export function LinraryRequestTable() {
     getFilteredRowModel: getFilteredRowModel(),
     onColumnVisibilityChange: setColumnVisibility,
     onRowSelectionChange: setRowSelection,
+    onPaginationChange: setPagination,
     state: {
       sorting,
       columnFilters,
       columnVisibility,
       rowSelection,
+      pagination
     },
   })
+  console.log("Current Page Index:", table.getState().pagination.pageIndex);
+console.log("Total Pages:", table.getPageCount());
 
   return (
     <div className="w-full">
@@ -163,7 +186,7 @@ export function LinraryRequestTable() {
           onChange={(event) =>
             table.getColumn("name")?.setFilterValue(event.target.value)
           }
-          className="max-w-sm"
+          className="max-w-sm bg-white"
         />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -192,7 +215,7 @@ export function LinraryRequestTable() {
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
-      <div className="rounded-md border">
+      <div className="rounded-md border bg-white px-2">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (

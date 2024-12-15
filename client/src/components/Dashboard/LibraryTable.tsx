@@ -2,6 +2,7 @@ import * as React from "react"
 import {
   ColumnDef,
   ColumnFiltersState,
+  PaginationState,
   SortingState,
   VisibilityState,
   flexRender,
@@ -147,12 +148,16 @@ export function LibraryTable() {
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>({})
   const [rowSelection, setRowSelection] = React.useState({})
+  const [pagination, setPagination] = React.useState<PaginationState>({
+      pageIndex: 0,
+      pageSize: 5,
+    })
 
   const table = useReactTable({
     data,
     columns,
-    rowCount:2,
     onSortingChange: setSorting,
+    onPaginationChange:setPagination,
     onColumnFiltersChange: setColumnFilters,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
@@ -165,12 +170,13 @@ export function LibraryTable() {
       columnFilters,
       columnVisibility,
       rowSelection,
+      pagination
 
     },
   })
 
   return (
-    <div className="w-full">
+    <div className="w-ful">
       <div className="flex items-center py-2">
         <Input
           placeholder="Search Library By Name..."
@@ -178,7 +184,7 @@ export function LibraryTable() {
           onChange={(event) =>
             table.getColumn("name")?.setFilterValue(event.target.value)
           }
-          className="max-w-sm"
+          className="max-w-sm bg-white"
         />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -207,7 +213,7 @@ export function LibraryTable() {
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
-      <div className="rounded-md border">
+      <div className="rounded-md border bg-white px-2">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
