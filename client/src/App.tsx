@@ -14,29 +14,37 @@ import { SuperAdminLibraries } from "./pages/Superadmin/SuperAdminLibraries"
 import { NewLibraryRequest } from "./pages/Superadmin/NewLibraryRequset"
 import { LibraryAdmins } from "./pages/Superadmin/LibraryAdmins"
 
+import { DashboardLayout } from "./pages/Superadmin/DashboardLayout"
+
 function App() {
 
 
   return (
     <BrowserRouter>
-    <ShowNavbar>
-    <Navbar/>
+      <ShowNavbar>
+        <Navbar />
 
-    </ShowNavbar>
-    
+      </ShowNavbar>
+
       <Routes>
-          <Route path="/login" element={<Login/>}/>
-          <Route path="/register" element={<Register/>}/>
-          <Route path="/" element={<Home/>}/>
-          <Route path="/contact" element={<Contact/>}></Route>
-          <Route path="/book/:id" element={<BookDetails/>}></Route>
-          <Route path="/gener/:name" element={<GenerPage/>}></Route>
-          <Route path="/profile" element={<Profile/>}></Route>
-          <Route path="/dashboard" element={<Dashboard/>}></Route>
-          <Route path="/dashboard/libraries" element={<SuperAdminLibraries/>}></Route>
-          <Route path="/dashboard/new-library" element={<NewLibraryRequest/>}></Route>
-          <Route path="/dashboard/library-admins" element={<LibraryAdmins/>}></Route>
-          
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/contact" element={<Contact />}></Route>
+        <Route path="/book/:id" element={<BookDetails />}></Route>
+        <Route path="/gener/:name" element={<GenerPage />}></Route>
+        <Route path="/profile" element={<Profile />}></Route>
+
+
+        {/* Duper admin routes */}
+        <Route path="/dashboard" element={<DashboardLayout />}>
+          <Route index element={<Dashboard />} />
+          <Route path="libraries" element={<SuperAdminLibraries />} />
+          <Route path="new-library" element={<NewLibraryRequest />} />
+          <Route path="library-admins" element={<LibraryAdmins />} />
+        </Route>
+
+
 
       </Routes>
     </BrowserRouter>

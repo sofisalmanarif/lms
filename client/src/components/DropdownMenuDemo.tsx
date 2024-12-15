@@ -39,7 +39,9 @@ export function DropdownMenuDemo({children}:{children:React.ReactNode}) {
           
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
+        <Link to={"/admin"}>
         <DropdownMenuItem>My Library</DropdownMenuItem>
+        </Link>
         
         <DropdownMenuSeparator />
         <DropdownMenuItem>
