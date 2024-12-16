@@ -23,7 +23,7 @@ const BookCard = () => {
             </div>
           </CardContent>
           <div className="w-full mx-0 sm:p-2 pb-1 ">
-            <Button  variant={"default"} className="w-full font-semibold">Reserve Book</Button>
+            <Button  variant={"default"} size={"sm"} className="w-full font-semibold">Reserve Book</Button>
           </div>
         </Card>
         )

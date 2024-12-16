@@ -1,10 +1,11 @@
 "use client"
 
-import { type LucideIcon } from "lucide-react"
+import {  type LucideIcon } from "lucide-react"
 
 import {
   Collapsible,
-  
+  CollapsibleContent,
+  CollapsibleTrigger,
 } from "@/components/ui/collapsible"
 import {
   SidebarGroup,
@@ -13,7 +14,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import { NavLink } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 export function NavMain({
   items,
@@ -23,7 +24,7 @@ export function NavMain({
     url: string
     icon?: LucideIcon
     isActive?: boolean
-
+    
   }[]
 }) {
   return (
@@ -37,14 +38,20 @@ export function NavMain({
             defaultOpen={item.isActive}
             className="group/collapsible"
           >
-            <NavLink to={item.url} className="hover:bg-orange-100 rounded-md">
-              <SidebarMenuItem>
-                <SidebarMenuButton tooltip={item.title} className="!bg-transparent">
+            <SidebarMenuItem>
+              <CollapsibleTrigger asChild>
+              <Link to={item.url}>
+                <SidebarMenuButton tooltip={item.title}>
                   {item.icon && <item.icon />}
                   <span>{item.title}</span>
+                  {/* <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" /> */}
                 </SidebarMenuButton>
-              </SidebarMenuItem>
-            </NavLink>
+              </Link>
+              </CollapsibleTrigger>
+              <CollapsibleContent>
+               
+              </CollapsibleContent>
+            </SidebarMenuItem>
           </Collapsible>
         ))}
       </SidebarMenu>

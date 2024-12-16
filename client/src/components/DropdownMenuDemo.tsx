@@ -27,14 +27,14 @@ export function DropdownMenuDemo({children}:{children:React.ReactNode}) {
             Profile
           </DropdownMenuItem>
           </Link>
+          <Link to={"/dashboard"}>
           {isAdmin &&
           
           <DropdownMenuItem>
-            <Link to={"/dashboard"}>
             Dashboard
-            </Link>
             
           </DropdownMenuItem>}
+            </Link>
          
           
         </DropdownMenuGroup>

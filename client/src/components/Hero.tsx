@@ -21,12 +21,12 @@ const Hero = () => {
                     />
 
 
-                    <Button className="font-semibold h-full rounded-l-none sm:text-xl text-sm shadow-none ">AAAAA</Button>
+                    <Button className="font-semibold h-full rounded-l-none sm:text-xl text-sm shadow-none ">Search</Button>
 
                 {searchTerm&&<SearchListDiv/>}
                 </div>
-                <div className="w-full  px-4">
-                    <h1 className=" text-center leading-none sm:text-6xl text-2xl font-extrabold">
+                <div className="w-full flex  justify-center items-center flex-col px-4">
+                    <h1 className=" leading-none lg:text-7xl md:text-5xl text-2xl text-center font-extrabold">
                         Thousands of books,
                         Unlimited potential
                     </h1>
