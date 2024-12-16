@@ -122,8 +122,8 @@ export const columns: ColumnDef<Library>[] = [
 
               <DropdownMenuSeparator />
               <DropdownMenuItem>View Details</DropdownMenuItem>
-              <DropdownMenuItem className="text-blue-400 hover:text-green-500">Accept</DropdownMenuItem>
-              <DropdownMenuItem className="text-red-400 hover:text-red-500">Raject</DropdownMenuItem>
+              <DropdownMenuItem className="text-blue-400 focus:text-blue-500 ">Accept</DropdownMenuItem>
+              <DropdownMenuItem className="text-red-400 focus:text-red-500">Reject</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>

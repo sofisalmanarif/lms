@@ -11,7 +11,7 @@ interface DataTableProps<TData, TValue> {
 function DataTable<TData, TValue>({ table, columns }: DataTableProps<TData, TValue>) {
 
     return (
-        <Table>
+        <Table className="overflow-x-scroll bg-white">
             <TableHeader>
                 {table.getHeaderGroups().map((headerGroup) => (
                     <TableRow key={headerGroup.id}>

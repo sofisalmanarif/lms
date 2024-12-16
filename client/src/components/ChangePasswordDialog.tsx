@@ -19,7 +19,7 @@ export function ChangePasswordDialog({children,id}:{children:React.ReactNode,id:
       <DialogTrigger asChild>
         {children}
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="sm:max-w-[425px] w-[90vw] rounded-md">
         <DialogHeader>
           <DialogTitle>Change Password</DialogTitle>
           <DialogDescription>

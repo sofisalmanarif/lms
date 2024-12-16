@@ -105,6 +105,7 @@ export const columns: ColumnDef<Library>[] = [
     enableHiding: false,
     cell: ({ row }) => {
       const library = row.original;
+      console.log(library)
   
       return (
         <div className="flex justify-end">
@@ -124,7 +125,7 @@ export const columns: ColumnDef<Library>[] = [
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem>View Details</DropdownMenuItem>
-              <DropdownMenuItem className="text-red-400 hover:text-red-500">Remove</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => console.log(library.id)} className="text-red-400 focus:text-red-500">Remove</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
@@ -172,7 +173,7 @@ export function AdminLibraryTable() {
   console.log("admins Total Pages:", table.getPageCount());
 
   return (
-    <div className="w-full">
+    <div className="w-full overflow-x-scroll">
       <div className="flex items-center py-2">
         <Input
           placeholder="Search Library By Name..."
@@ -209,7 +210,7 @@ export function AdminLibraryTable() {
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
-      <div className="rounded-md border bg-white px-2">
+      <div className="rounded-md border bg-white w-full overflow-x-scroll px-2">
       <DataTable columns={columns} table={table} />
       </div>
       <div className="flex items-center justify-end space-x-2 py-4">

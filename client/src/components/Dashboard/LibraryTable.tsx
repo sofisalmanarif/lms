@@ -123,7 +123,7 @@ export const columns: ColumnDef<Library>[] = [
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem>View Details</DropdownMenuItem>
-              <DropdownMenuItem className="text-red-400 hover:text-red-500">Remove</DropdownMenuItem>
+              <DropdownMenuItem className="text-red-400 focus:text-red-500">Remove</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
