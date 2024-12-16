@@ -21,12 +21,13 @@ import {
 } from "@/components/ui/sidebar"
 
 // This is sample data.
+const user=  {
+  name: "shadcn",
+  email: "m@example.com",
+  avatar: "/avatars/shadcn.jpg",
+}
+
 const data = {
-  user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
-  },
   navMain: [
     {
       title: "Dashboard",
@@ -54,9 +55,10 @@ const data = {
   
 }
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+export function AppSidebar({ ...props }:React.ComponentProps<typeof Sidebar>) {
+  
   return (
-    <Sidebar collapsible="icon" {...props} className="mt-[7svh] bg-red-300 h-[93vh]  ml-20 ">
+    <Sidebar collapsible="icon" {...props} className="mt-[7svh]  h-[93vh]  ml-20 ">
       <SidebarHeader>
         <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
                   <div className="flex items-start gap-0 px-1">
@@ -69,7 +71,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavMain items={data.navMain} />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <NavUser user={user} />
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>
