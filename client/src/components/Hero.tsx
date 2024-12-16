@@ -26,11 +26,11 @@ const Hero = () => {
                 {searchTerm&&<SearchListDiv/>}
                 </div>
                 <div className="w-full flex  justify-center items-center flex-col px-4">
-                    <h1 className=" leading-none lg:text-7xl md:text-5xl text-xl text-center font-extrabold">
+                    <h1 className=" leading-none lg:text-7xl md:text-5xl text-lg text-center font-extrabold">
                         Thousands of books,
                         Unlimited potential
                     </h1>
-                    <h3 className="sm:text-xl text-xs mt-2 text-gray-500 text-center">Unlock the world of knowledge. Access your books, manage your borrowings,
+                    <h3 className="sm:text-xl text-sm mt-2 text-gray-500 text-center">Unlock the world of knowledge. Access your books, manage your borrowings,
                         <br />
                         and explore our vast collection with ease
 
