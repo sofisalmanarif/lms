@@ -5,6 +5,7 @@ import {
   PaginationState,
   SortingState,
   VisibilityState,
+
   getCoreRowModel,
   getFilteredRowModel,
   getPaginationRowModel,
@@ -28,40 +29,40 @@ import { Input } from "@/components/ui/input"
 import DataTable from "./DataTable"
 
 const data: Library[] = [
-    { id: "jehyerwu7", img:"/book.png", name: "Salman", email: "salman@gmail.com", licenceNo: 73774674, location: "Karachi" },
-    { id: "aiwopei28",img:"/book.png", name: "Aisha", email: "aisha@example.com", licenceNo: 83927541, location: "Lahore" },
-    { id: "jehyerwu7", img:"/book.png", name: "Salman", email: "salman@gmail.com", licenceNo: 73774674, location: "Karachi" },
-    { id: "aiwopei28",img:"/book.png", name: "Aisha", email: "aisha@example.com", licenceNo: 83927541, location: "Lahore" },
-    { id: "jehyerwu7", img:"/book.png", name: "Shahla", email: "salman@gmail.com", licenceNo: 73774674, location: "Karachi" },
-    { id: "aiwopei28",img:"/book.png", name: "aaahil", email: "aisha@example.com", licenceNo: 83927541, location: "Lahore" },
-    { id: "jehyerwu7", img:"/book.png", name: "ahmad", email: "salman@gmail.com", licenceNo: 73774674, location: "Karachi" },
-    { id: "aiwopei28",img:"/book.png", name: "Aisha", email: "aisha@example.com", licenceNo: 83927541, location: "Lahore" },
-    { id: "jehyerwu7", img:"/book.png", name: "Salman", email: "salman@gmail.com", licenceNo: 73774674, location: "Karachi" },
-    { id: "aiwopei28",img:"/book.png", name: "Aisha", email: "aisha@example.com", licenceNo: 83927541, location: "Lahore" },
-    { id: "jehyerwu7", img:"/book.png", name: "Salman", email: "salman@gmail.com", licenceNo: 73774674, location: "Karachi" },
-    { id: "aiwopei28",img:"/book.png", name: "Aisha", email: "aisha@example.com", licenceNo: 83927541, location: "Lahore" },
-    { id: "jehyerwu7", img:"/book.png", name: "Salman", email: "salman@gmail.com", licenceNo: 73774674, location: "Karachi" },
-    { id: "aiwopei28",img:"/book.png", name: "Aisha", email: "aisha@example.com", licenceNo: 83927541, location: "Lahore" },
-    
-  ]
+  { id: "jehyerwu7", img: "/book.png", name: "Salman", email: "salman@gmail.com", licenceNo: 73774674, location: "Karachi" },
+  { id: "aiwopei28", img: "/book.png", name: "Aisha", email: "aisha@example.com", licenceNo: 83927541, location: "Lahore" },
+  { id: "jehyerwu7", img: "/book.png", name: "Salman", email: "salman@gmail.com", licenceNo: 73774674, location: "Karachi" },
+  { id: "aiwopei28", img: "/book.png", name: "Aisha", email: "aisha@example.com", licenceNo: 83927541, location: "Lahore" },
+  { id: "jehyerwu7", img: "/book.png", name: "Shahla", email: "salman@gmail.com", licenceNo: 73774674, location: "Karachi" },
+  { id: "aiwopei28", img: "/book.png", name: "aaahil", email: "aisha@example.com", licenceNo: 83927541, location: "Lahore" },
+  { id: "jehyerwu7", img: "/book.png", name: "ahmad", email: "salman@gmail.com", licenceNo: 73774674, location: "Karachi" },
+  { id: "aiwopei28", img: "/book.png", name: "Aisha", email: "aisha@example.com", licenceNo: 83927541, location: "Lahore" },
+  { id: "jehyerwu7", img: "/book.png", name: "Salman", email: "salman@gmail.com", licenceNo: 73774674, location: "Karachi" },
+  { id: "aiwopei28", img: "/book.png", name: "Aisha", email: "aisha@example.com", licenceNo: 83927541, location: "Lahore" },
+  { id: "jehyerwu7", img: "/book.png", name: "Salman", email: "salman@gmail.com", licenceNo: 73774674, location: "Karachi" },
+  { id: "aiwopei28", img: "/book.png", name: "Aisha", email: "aisha@example.com", licenceNo: 83927541, location: "Lahore" },
+  { id: "jehyerwu7", img: "/book.png", name: "Salman", email: "salman@gmail.com", licenceNo: 73774674, location: "Karachi" },
+  { id: "aiwopei28", img: "/book.png", name: "Aisha", email: "aisha@example.com", licenceNo: 83927541, location: "Lahore" },
+
+]
 
 export type Library = {
   id: string,
-  img:string
+  img: string
   name: string
   email: string,
   licenceNo: number,
-  location :string
+  location: string
 }
 
 export const columns: ColumnDef<Library>[] = [
-    {
-        accessorKey: "img",
-        header: "Valid Document",
-        cell: ({ row }) => (
-          <img src={row.getValue("img")} className="h-14"></img>
-        ),
-      },
+  {
+    accessorKey: "img",
+    header: "Valid Document",
+    cell: ({ row }) => (
+      <img src={row.getValue("img")} className="h-14"></img>
+    ),
+  },
   {
     accessorKey: "name",
     header: "Name",
@@ -91,7 +92,7 @@ export const columns: ColumnDef<Library>[] = [
       <div className="">{row.getValue("licenceNo")}</div>
     ),
   },
-  
+
   {
     accessorKey: "location",
     header: () => <div className="">Location</div>,
@@ -99,14 +100,14 @@ export const columns: ColumnDef<Library>[] = [
       <div className="">{row.getValue("location")}</div>
     ),
   },
-  
+
   {
     id: "actions",
     header: () => <div className="text-right">Action</div>,
     enableHiding: false,
-    cell: ({  }) => {
+    cell: ({ }) => {
 
-  
+
       return (
         <div className="flex justify-end">
           <DropdownMenu>
@@ -118,7 +119,7 @@ export const columns: ColumnDef<Library>[] = [
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <DropdownMenuLabel>Actions</DropdownMenuLabel>
-              
+
               <DropdownMenuSeparator />
               <DropdownMenuItem>View Details</DropdownMenuItem>
               <DropdownMenuItem className="text-blue-400 hover:text-green-500">Accept</DropdownMenuItem>
@@ -144,7 +145,7 @@ export function LinraryRequestTable() {
     pageSize: 5,
   })
 
-  
+
 
   const table = useReactTable({
     data,
@@ -167,7 +168,7 @@ export function LinraryRequestTable() {
     },
   })
   console.log("Current Page Index:", table.getState().pagination.pageIndex);
-console.log("Total Pages:", table.getPageCount());
+  console.log("Total Pages:", table.getPageCount());
 
   return (
     <div className="w-full">
@@ -208,7 +209,7 @@ console.log("Total Pages:", table.getPageCount());
         </DropdownMenu>
       </div>
       <div className="rounded-md border bg-white px-2">
-      <DataTable columns={columns} table={table} />
+        <DataTable columns={columns} table={table} />
       </div>
       <div className="flex items-center justify-end space-x-2 py-4">
         <div className="space-x-2">

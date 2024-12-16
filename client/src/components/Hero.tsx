@@ -21,7 +21,7 @@ const Hero = () => {
                     />
 
 
-                    <Button className="font-semibold h-full rounded-l-none sm:text-xl text-sm shadow-none ">Search</Button>
+                    <Button className="font-semibold h-full rounded-l-none sm:text-xl text-sm shadow-none ">AAAAA</Button>
 
                 {searchTerm&&<SearchListDiv/>}
                 </div>

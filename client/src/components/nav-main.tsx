@@ -5,7 +5,6 @@ import { type LucideIcon } from "lucide-react"
 import {
   Collapsible,
   
-  
 } from "@/components/ui/collapsible"
 import {
   SidebarGroup,

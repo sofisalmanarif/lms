@@ -1,6 +1,5 @@
 
-import { Table } from "lucide-react"
-import { TableBody, TableCell, TableHead, TableHeader, TableRow } from "../ui/table"
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../ui/table"
 import { ColumnDef, flexRender } from "@tanstack/react-table"
 
 interface DataTableProps<TData, TValue> {
@@ -10,6 +9,7 @@ interface DataTableProps<TData, TValue> {
 }
 
 function DataTable<TData, TValue>({ table, columns }: DataTableProps<TData, TValue>) {
+
     return (
         <Table>
             <TableHeader>
@@ -31,7 +31,7 @@ function DataTable<TData, TValue>({ table, columns }: DataTableProps<TData, TVal
                 ))}
             </TableHeader>
             <TableBody>
-                {table.getRowModel().rows.length ? table.getRowModel().rows.map((row) => (
+                {table.getRowModel().rows.length > 0 ? table.getRowModel().rows.map((row) => (
                     <TableRow
                         key={row.id}
                         data-state={row.getIsSelected() && "selected"}
