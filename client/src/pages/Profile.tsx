@@ -23,7 +23,7 @@ const Profile = () => {
                   <Button>Edit Profile</Button>
                   <ChangePasswordDialog id={"salman"}>
 
-                  <Button variant={"outline"} > Forgot Password</Button>
+                  <Button variant={"outline"} > Change Password</Button>
                   </ChangePasswordDialog>
                 </div>
               </div>

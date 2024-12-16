@@ -9,8 +9,8 @@ const Hero = () => {
     const [searchTerm, setSearchTerm] = useState<string>("")
     return (
         <section className='sm:h-[60vh] h-[35vh] min-h-[300px] w-full bg-[radial-gradient(circle,_rgba(251,146,60,.7)_10%,_rgba(255,237,213,0.3)_100%,_transparent_10%)]'>
-            <div className='h-full w-full backdrop-blur-3xl sm:px-20 px-4 flex flex-col items-center justify-center sm:gap-14 gap-6'>
-                <div className="sm:w-[55vw] relative w-[90%] bg-white flex sm:h-12 h-10 rounded-md items-center pl-4">
+            <div className='h-full w-full backdrop-blur-3xl sm:px-20 px-4 flex flex-col items-center  justify-center sm:gap-14 gap-6'>
+                <div className="sm:w-[50vw] relative w-[90%] bg-white flex sm:h-12 h-10 rounded-md items-center pl-4">
                    <span> <SearchIcon size={24} color="gray" /></span>
                     <Input
                         className="py-2  mt-0 px-4 flex items-center rounded-none border-none shadow-none focus:ring-0 focus:ring-offset-0 focus:border-none focus:outline-none focus-visible:ring-0"
@@ -26,7 +26,7 @@ const Hero = () => {
                 {searchTerm&&<SearchListDiv/>}
                 </div>
                 <div className="w-full flex  justify-center items-center flex-col px-4">
-                    <h1 className=" leading-none lg:text-7xl md:text-5xl text-lg text-center font-extrabold">
+                    <h1 className=" leading-none lg:text-6xl md:text-5xl text-lg text-center font-extrabold">
                         Thousands of books,
                         Unlimited potential
                     </h1>
