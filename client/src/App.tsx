@@ -15,6 +15,10 @@ import { NewLibraryRequest } from "./pages/Superadmin/NewLibraryRequset"
 import { LibraryAdmins } from "./pages/Superadmin/LibraryAdmins"
 
 import { DashboardLayout } from "./pages/Superadmin/DashboardLayout"
+import { AdminDashboardLayout } from "./pages/admin/AdminDashboardLayout"
+import { BooksPage } from "./pages/admin/BooksPage"
+import { UsersPage } from "./pages/admin/UsersPage"
+import { UsersRequestPage } from "./pages/admin/UserRequestPage"
 
 function App() {
 
@@ -36,12 +40,20 @@ function App() {
         <Route path="/profile" element={<Profile />}></Route>
 
 
-        {/* Duper admin routes */}
+        {/* super admin routes */}
         <Route path="/dashboard" element={<DashboardLayout />}>
           <Route index element={<Dashboard />} />
           <Route path="libraries" element={<SuperAdminLibraries />} />
           <Route path="new-library" element={<NewLibraryRequest />} />
           <Route path="library-admins" element={<LibraryAdmins />} />
+        </Route>
+
+        {/*  admin routes */}
+        <Route path="/admin" element={<AdminDashboardLayout />}>
+          <Route index element={<Dashboard />} />
+          <Route path="users" element={<UsersPage />} />
+          <Route path="books" element={<BooksPage />} />
+          <Route path="new-users" element={<UsersRequestPage />} />
         </Route>
 
 

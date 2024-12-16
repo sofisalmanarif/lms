@@ -7,12 +7,14 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { LayoutDashboard, LogOut, User2 } from "lucide-react"
 import { useState } from "react"
 import { Link } from "react-router-dom"
 
-export function DropdownMenuDemo({children}:{children:React.ReactNode}) {
+export function DropdownMenuDemo({ children }: { children: React.ReactNode }) {
 
   const [isAdmin,] = useState<boolean>(true)
+  const [isSuperAdmin,] = useState<boolean>(true)
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -22,30 +24,34 @@ export function DropdownMenuDemo({children}:{children:React.ReactNode}) {
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-         <Link to={"/profile"}>
-         <DropdownMenuItem className="flex items-center">
-            Profile
-          </DropdownMenuItem>
+          <Link to={"/profile"}>
+            <DropdownMenuItem className="flex items-center">
+              <User2 /> Profile
+            </DropdownMenuItem>
           </Link>
           <Link to={"/dashboard"}>
-          {isAdmin &&
-          
-          <DropdownMenuItem>
-            Dashboard
-            
-          </DropdownMenuItem>}
-            </Link>
-         
-          
+            {isSuperAdmin &&
+
+              <DropdownMenuItem>
+                <LayoutDashboard /> Dashboard
+
+              </DropdownMenuItem>}
+          </Link>
+
+
         </DropdownMenuGroup>
-        <DropdownMenuSeparator />
+
         <Link to={"/admin"}>
-        <DropdownMenuItem>My Library</DropdownMenuItem>
+          {isAdmin &&
+
+            <DropdownMenuItem>
+              <LayoutDashboard /> Admin</DropdownMenuItem>
+          }
         </Link>
-        
+
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
-          Log out
+        <DropdownMenuItem className="text-red-400 focus:text-red-500">
+          <LogOut /> Log out
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

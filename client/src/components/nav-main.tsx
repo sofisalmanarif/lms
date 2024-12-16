@@ -5,7 +5,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
 } from "@/components/ui/sidebar"
-import {  NavLink } from "react-router-dom"
+import {  NavLink,} from "react-router-dom"
 
 export function NavMain({
   items,
@@ -18,6 +18,9 @@ export function NavMain({
 
   }[]
 }) {
+
+  // const location = useLocation()
+  // console.log("location",location.pathname)
   return (
     <SidebarGroup>
       <SidebarGroupLabel>Dashboard</SidebarGroupLabel>
