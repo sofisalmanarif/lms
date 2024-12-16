@@ -1,18 +1,9 @@
-"use client"
-
 import { type LucideIcon } from "lucide-react"
-
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible"
 import {
   SidebarGroup,
   SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuButton,
-  SidebarMenuItem,
 } from "@/components/ui/sidebar"
 import {  NavLink } from "react-router-dom"
 
@@ -32,31 +23,16 @@ export function NavMain({
       <SidebarGroupLabel>Dashboard</SidebarGroupLabel>
       <SidebarMenu>
         {items.map((item) => (
-          <Collapsible
-            key={item.title}
-            asChild
-            defaultOpen={item.isActive}
-            className="group/collapsible"
-          >
+          <SidebarMenuButton asChild tooltip={item.title} className=" hover:bg-gray-200 py-2">
+            
             <NavLink
               to={item.url}
-              className={({ isActive }) => (isActive ? "bg-red-400" : "bg-transparent")}
+              className={({ isActive }) => (isActive ? "bg-gray-200 rounded-md" : "bg-transparent hover:bg-orange-200")}
             >
-
-              <SidebarMenuItem className="hover:bg-orange-100 rounded-md">
-                <CollapsibleTrigger asChild>
-                  <SidebarMenuButton tooltip={item.title}>
                     {item.icon && <item.icon />}
                     <span>{item.title}</span>
-                    {/* <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" /> */}
-                  </SidebarMenuButton>
-                </CollapsibleTrigger>
-                <CollapsibleContent>
-
-                </CollapsibleContent>
-              </SidebarMenuItem>
             </NavLink>
-          </Collapsible>
+                  </SidebarMenuButton>
         ))}
       </SidebarMenu>
     </SidebarGroup>

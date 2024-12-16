@@ -33,7 +33,7 @@ const data = {
       title: "Dashboard",
       url: "/dashboard",
       icon: LucideLayoutDashboard,
-      isActive: true,
+      // isActive: true,
       
     },
     {
@@ -58,7 +58,7 @@ const data = {
 export function AppSidebar({ ...props }:React.ComponentProps<typeof Sidebar>) {
   
   return (
-    <Sidebar collapsible="icon" variant="sidebar" {...props} className="mt-[7svh] bg-gray-100/20 h-[93vh] mx-20 ">
+    <Sidebar collapsible="icon" variant="sidebar" {...props} className="mt-[7svh] bg-orange-00/20 h-[93vh] mx-20 ">
       <SidebarHeader>
         <header className="flex h-16 shrink-0 mt-2 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
                   <div className="flex items-start gap-0 ">
