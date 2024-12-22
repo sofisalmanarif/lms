@@ -19,6 +19,7 @@ import { AdminDashboardLayout } from "./pages/admin/AdminDashboardLayout"
 import { BooksPage } from "./pages/admin/BooksPage"
 import { UsersPage } from "./pages/admin/UsersPage"
 import { UsersRequestPage } from "./pages/admin/UserRequestPage"
+import { ReservationsPage } from "./pages/admin/ReservationsPage"
 
 function App() {
 
@@ -54,6 +55,7 @@ function App() {
           <Route path="users" element={<UsersPage />} />
           <Route path="books" element={<BooksPage />} />
           <Route path="new-users" element={<UsersRequestPage />} />
+          <Route path="reservations" element={<ReservationsPage />} />
         </Route>
 
 
