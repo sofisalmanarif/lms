@@ -1,6 +1,7 @@
 import * as React from "react"
 import {
     Book,
+    Hourglass,
     LucideLayoutDashboard,
     UserPlus,
     Users,
@@ -58,7 +59,7 @@ const data = {
         {
             title: "Reservations",
             url: "/admin/reservations",
-            icon: UserPlus,
+            icon: Hourglass,
         },
 
 
