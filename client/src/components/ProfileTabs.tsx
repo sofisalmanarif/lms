@@ -6,13 +6,14 @@ import {
   TabsTrigger,
 } from "@/components/ui/tabs"
 import { ReservationTable } from "./ReservationTable"
+import { TypographySmall } from "./Typogrphies"
 
 export function ProfileTabs() {
   return (
     <Tabs defaultValue="reservations" className="w-full">
       <TabsList className="grid w-[200px] -ml-3 px-0 bg-white grid-cols-2">
-        <TabsTrigger value="reservations" className="sm:px-0 px-0">Reservations</TabsTrigger>
-        <TabsTrigger value="borrowings">Borrowings</TabsTrigger>
+        <TabsTrigger value="reservations" className="sm:px-0 px-0"><TypographySmall>Reservations</TypographySmall></TabsTrigger>
+        <TabsTrigger value="borrowings"><TypographySmall>Borrowings</TypographySmall></TabsTrigger>
       </TabsList>
       <p className="border-b-[1px] border-gray-200 sm:mb-4"></p>
       <TabsContent value="borrowings">
@@ -42,9 +43,10 @@ function BorrowingBookCard({bgColor}:{bgColor:string}){
           <img src="/book.png" alt="" />
   
         </div>
-        <div>
-        <p className="sm:text-md text-sm ml-2">You Don't know js</p>
-        <p className="sm:text-xs text-[10px] ml-2">You Don't know js</p>
+        <div className="flex flex-col gap-1">
+        
+        <TypographySmall>You Don't know js</TypographySmall>
+        <TypographySmall >You Don't know js</TypographySmall>
         </div>
   
       </div>

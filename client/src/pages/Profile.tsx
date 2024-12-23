@@ -1,5 +1,6 @@
 import { ChangePasswordDialog } from "@/components/dilogs/ChangePasswordDialog"
 import { ProfileTabs } from "@/components/ProfileTabs"
+import {  TypographyH2, TypographyMuted } from "@/components/Typogrphies"
 
 import { Button } from "@/components/ui/button"
 
@@ -16,9 +17,12 @@ const Profile = () => {
                 <img src="https://github.com/shadcn.png" className="md:h-[30vh] md:w-[30vh] h-[40vw] w-[40vw] md:rounded-[60px] rounded-3xl" alt="" />
                 </div>
               <div className="text-md text-center md:text-left md:pb-6 pb-0 pl-4">
-                <p className="md:text-4xl  text-3xl font-semibold">Sofi Salman</p>
-                <p className="text-gray-500">Sofisalman9906@gmail.com</p>
-                <p className="text-gray-500">lelafe</p>
+                
+                <TypographyH2 className="text-6xl">
+                Sofi Salman
+                </TypographyH2>
+                <TypographyMuted className="">Sofisalman9906@gmail.com</TypographyMuted>
+                <TypographyMuted >lelafe</TypographyMuted>
                 <div className="flex gap-4 mt-4">
                   <Button>Edit Profile</Button>
                   <ChangePasswordDialog id={"salman"}>
@@ -58,8 +62,8 @@ export default Profile
 function Counts({heading,count}:{heading:string,count:string}){
   return(
     <div className="flex flex-col gap-2">
-    <p className="md:text-md text-md text-gray-500">{heading}</p>
-    <p className="md:text-4xl  text-3xl font-semibold text-center md:text-left">{count}</p>
+    <TypographyMuted >{heading}</TypographyMuted>
+    <TypographyH2 className="md:text-4xl  text-3xl font-semibold text-center md:text-left">{count}</TypographyH2>
     </div>
   )
 }

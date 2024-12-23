@@ -1,5 +1,6 @@
 import AuthFooter from "@/components/AuthFooter"
 import AuthSideBar from "@/components/AuthSideBar"
+import { TypographyP, TypographySmall } from "@/components/Typogrphies"
 import { Button } from "@/components/ui/button"
 import ErrorMessage from "@/components/ui/ErrorMessage"
 import { Input } from "@/components/ui/input"
@@ -59,7 +60,7 @@ const Login = () => {
     <div className="w-full max-w-[1920px] mx-auto  h-screen  flex ">
         <div className="sm:w-[50%] w-full flex flex-col relative px-0 items-center justify-center "> 
             <div className="flex flex-col  sm:w-[50%] w-full text-left items-center  gap-6">
-                <h1 className="text-4xl font-bold sm:-ml-[84px] -ml-[36px] ">Welcome back</h1>  
+                <h2 className="text-4xl font-bold sm:-ml-[70px] -ml-[36px] ">Welcome back</h2>  
                 <form onSubmit={loginHandler}  className="flex w-[70%] flex-col gap-4 ">
                     
                     <div>
@@ -78,10 +79,13 @@ const Login = () => {
                         }
                         </span>
                     </div>
+                    <TypographySmall>
+
                     <Link className="text-blue-700 text-xs" to={"/"}>Forgot Password</Link>
+                    </TypographySmall>
                     <Button  type="submit" className="sm:mt-6 mt-2 flex items-center justify-center sm:w-24 w-20 font-semibold">Sign In</Button>
                 </form>
-            <span className="text-sm sm:-ml-36 ">Dont have an account? <Link className="text-blue-700 font-semibold" to={"/register"}>Sign Up</Link> </span>
+            <TypographyP    className="text-sm sm:-ml-[116px] ">Dont have an account? <Link className="text-blue-700 font-semibold" to={"/register"}>Sign Up</Link> </TypographyP>
             </div>
             <AuthFooter/>
         </div>

@@ -17,7 +17,7 @@ export function TypographyH1({ children, className = "" }: TypographyProps) {
 
 export function TypographyH2({ children, className = "" }: TypographyProps) {
     return (
-        <h2 className={`scroll-m-20 border-b pb-2 md:text-4xl text-xl font-semibold tracking-tight first:mt-0 ${className}`}>
+        <h2 className={`scroll-m-20  md:text-5xl text-xl  tracking-tight first:mt-0 ${className}`}>
             {children}
         </h2>
     )
@@ -55,6 +55,13 @@ export function TypographyH4({ children, className = "" }: TypographyProps) {
       </p>
     )
   }
+  export function TypographyTableH2({ children, className = "" }: TypographyProps) {
+    return (
+      <h2 className={`sm:text-4xl text-2xl text-primary ${className}` }>
+        {children}
+      </h2>
+    )
+  }
   
   
 
@@ -66,3 +73,9 @@ export function TypographyMuted({ children, className = "" }: TypographyProps) {
     )
 }
 
+export function TypographySmall({ children, className = "" }: TypographyProps) {
+    return (
+      <small className={`text-xs font-medium leading-none ${className}`}>{children}</small>
+    )
+  }
+  
