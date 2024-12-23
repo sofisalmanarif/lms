@@ -1,4 +1,4 @@
-import { ChangePasswordDialog } from "@/components/ChangePasswordDialog"
+import { ChangePasswordDialog } from "@/components/dilogs/ChangePasswordDialog"
 import { ProfileTabs } from "@/components/ProfileTabs"
 
 import { Button } from "@/components/ui/button"

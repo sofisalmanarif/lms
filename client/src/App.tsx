@@ -56,6 +56,7 @@ function App() {
           <Route path="books" element={<BooksPage />} />
           <Route path="new-users" element={<UsersRequestPage />} />
           <Route path="reservations" element={<ReservationsPage />} />
+          <Route path="borrowings" element={<ReservationsPage />} />
         </Route>
 
 

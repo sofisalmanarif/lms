@@ -50,11 +50,17 @@ const data = {
             url: "/admin/new-users",
             icon: UserPlus,
         },
+        // {
+        //     title: "Borrowings",
+        //     url: "/admin/borrowings",
+        //     icon: UserPlus,
+        // },
         {
             title: "Reservations",
             url: "/admin/reservations",
             icon: UserPlus,
         },
+
 
 
     ],
