@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 
 const Profile = () => {
   return (
-    <main className='md:h-[20vh] h-[20vh] w-full bg-[radial-gradient(circle,_rgba(251,146,60,.7)_10%,_rgba(255,237,213,0.3)_100%,_transparent_10%)]'>
+    <main className='md:h-[20vh] h-[20vh] w-full bg-[radial-gradient(circle,_hsl(var(--primary)/0.5)_10%,_rgba(255,237,213,0.3)_100%,_transparent_10%)]'>
         <div className='h-full w-full backdrop-blur-3xl  flex flex-col items-center justify-center md:gap-14 gap-6'>
 
           </div>  

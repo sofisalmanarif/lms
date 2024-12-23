@@ -17,6 +17,7 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import  * as yup from "yup"
 import AuthFooter from "@/components/AuthFooter"
+import { TypographyP } from "@/components/Typogrphies"
 
 
 type UserType = {
@@ -142,7 +143,7 @@ const Register = () => {
                     {/* <Link className="text-blue-700 text-xs" to={"/"}>Forgot Password</Link> */}
                     <Button  type="submit" className="sm:mt-6 mt-2 flex items-center justify-center sm:w-24 w-20 font-semibold">Sign Up</Button>
                 </form>
-            <span className="text-sm  sm:-ml-32">Already have an account? <Link className="text-blue-700 font-semibold" to={"/login"}> Sign In</Link> </span>
+            <TypographyP className="text-sm  sm:-ml-[100px]">Already have an account? <Link className="text-blue-700 font-semibold" to={"/login"}> Sign In</Link> </TypographyP>
             <AuthFooter/>
             </div>
         </div>

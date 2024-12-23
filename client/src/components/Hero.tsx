@@ -9,7 +9,8 @@ import { TypographyH1, TypographyMuted } from "./Typogrphies"
 const Hero = () => {
     const [searchTerm, setSearchTerm] = useState<string>("")
     return (
-        <section className='sm:h-[60vh] h-[35vh] min-h-[300px] w-full bg-[radial-gradient(circle,_rgba(251,146,60,.7)_10%,_rgba(255,237,213,0.3)_100%,_transparent_10%)]'>
+        <section className='sm:h-[60vh] h-[35vh] min-h-[300px] w-full bg-[radial-gradient(circle,_hsl(var(--primary)/0.5)_10%,_rgba(255,237,213,0.3)_100%,_transparent_10%)]
+'>
             <div className='h-full w-full backdrop-blur-3xl sm:px-20 px-4 flex flex-col items-center  justify-center sm:gap-14 gap-6'>
                 <div className="sm:w-[50vw] relative w-[90%] bg-white flex sm:h-12 h-10 rounded-md items-center pl-4">
                     <span> <SearchIcon size={24} color="gray" /></span>

@@ -1,8 +1,9 @@
-import { TypographyH1, TypographyMuted } from "./Typogrphies"
+import { TypographyH1,  TypographyMuted } from "./Typogrphies"
 
 const AuthSideBar = () => {
     return (
-        <div className="md:w-[50%]  hidden relative  bg-[radial-gradient(circle,_rgba(251,146,60,.7)_20%,_rgba(255,237,213,0.3)_90%,_transparent_10%)] sm:flex items-center justify-start">
+        <div className="md:w-[50%]  hidden relative  bg-[radial-gradient(circle,_hsl(var(--primary)/0.57)_20%,_rgba(255,237,213,0.3)_90%,_transparent_10%)]
+ sm:flex items-center justify-start">
 
             <div className="w-full relative p-20 pt-28 h-screen backdrop-blur-3xl z-10">
                 <TypographyH1 >Thousands of books, <br /> Unlimited potential</TypographyH1>
