@@ -1,7 +1,5 @@
 import { type LucideIcon } from "lucide-react"
 import {
-  SidebarGroup,
-  SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuButton,
 } from "@/components/ui/sidebar"
@@ -22,11 +20,10 @@ export function NavMain({
   // const location = useLocation()
   // console.log("location",location.pathname)
   return (
-    <SidebarGroup>
-      <SidebarGroupLabel>Dashboard</SidebarGroupLabel>
-      <SidebarMenu>
+   
+      <SidebarMenu className="px-4">
         {items.map((item) => (
-          <SidebarMenuButton asChild tooltip={item.title} className=" hover:bg-gray-200 py-2">
+          <SidebarMenuButton asChild tooltip={item.title} className=" hover:bg-gray-200  ">
             
             <NavLink
               to={item.url}
@@ -38,6 +35,6 @@ export function NavMain({
                   </SidebarMenuButton>
         ))}
       </SidebarMenu>
-    </SidebarGroup>
+  
   )
 }
