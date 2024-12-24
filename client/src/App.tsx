@@ -20,6 +20,7 @@ import { BooksPage } from "./pages/admin/BooksPage"
 import { UsersPage } from "./pages/admin/UsersPage"
 import { UsersRequestPage } from "./pages/admin/UserRequestPage"
 import { ReservationsPage } from "./pages/admin/ReservationsPage"
+import { BorrowingPage } from "./pages/admin/BorrowingPage"
 
 function App() {
 
@@ -56,7 +57,7 @@ function App() {
           <Route path="books" element={<BooksPage />} />
           <Route path="new-users" element={<UsersRequestPage />} />
           <Route path="reservations" element={<ReservationsPage />} />
-          <Route path="borrowings" element={<ReservationsPage />} />
+          <Route path="borrowings" element={<BorrowingPage />} />
         </Route>
 
 

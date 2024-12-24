@@ -54,7 +54,7 @@ export function AddUserDialog({children}:{children:React.ReactNode}) {
           </div>
           
           <DialogFooter>
-          <Button type="submit">Save changes</Button>
+          <Button type="submit">Add User</Button>
         </DialogFooter>
         </form>
      

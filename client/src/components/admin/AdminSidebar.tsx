@@ -1,6 +1,7 @@
 import * as React from "react"
 import {
     Book,
+    BookUp,
     Hourglass,
     LucideLayoutDashboard,
     UserPlus,
@@ -46,20 +47,21 @@ const data = {
             url: "/admin/books",
             icon: Book,
         },
+       
         {
-            title: "Requests",
-            url: "/admin/new-users",
-            icon: UserPlus,
+            title: "Borrowings",
+            url: "/admin/borrowings",
+            icon: BookUp ,
         },
-        // {
-        //     title: "Borrowings",
-        //     url: "/admin/borrowings",
-        //     icon: UserPlus,
-        // },
         {
             title: "Reservations",
             url: "/admin/reservations",
             icon: Hourglass,
+        },
+        {
+            title: "Requests",
+            url: "/admin/new-users",
+            icon: UserPlus,
         },
 
 

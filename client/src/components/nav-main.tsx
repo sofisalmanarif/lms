@@ -21,7 +21,7 @@ export function NavMain({
   // console.log("location",location.pathname)
   return (
    
-      <SidebarMenu className="px-4">
+      <SidebarMenu className="sm:px-2 px-0">
         {items.map((item) => (
           <SidebarMenuButton asChild tooltip={item.title} className=" hover:bg-gray-200  ">
             

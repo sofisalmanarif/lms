@@ -5,6 +5,7 @@ import {
   PaginationState,
   SortingState,
   VisibilityState,
+
   getCoreRowModel,
   getFilteredRowModel,
   getPaginationRowModel,
@@ -14,6 +15,7 @@ import {
 import { ArrowUpDown, ChevronDown, MoreVertical } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
+// import { Checkbox } from "@/components/ui/checkbox"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -26,81 +28,107 @@ import {
 import { Input } from "@/components/ui/input"
 import DataTable from "../Dashboard/DataTable"
 
-const data: ReservationType[] = [
-  { id: "jehyerwu7", name: "Salman", email: "salman@gmail.com", bookName: "You dont know js", reservationTime: "10:00 AM", receivingTime: "11:30 AM" },
+const data: BorrowingType[] = [
+  {id:"hghdfghdg", copyId: "jehyerwu7", img: "/book.png", userName: "salman", userEmail: "salmanauthor", borrowingDate: '21-11-24', returnDate: "21-1-25",fine:79 },
+  {id:"jhdghsgdf", copyId: "aiwopei28", img: "/book.png", userName: "moomin", userEmail: "aisha@example.com", borrowingDate: '1-9-24', returnDate: "1-1-25",fine:66 },
+
 
 ]
 
-export type ReservationType = {
-  id: string
-  name: string
-  email: string,
-  bookName: string
-  reservationTime: string,
-  receivingTime: string
+export type BorrowingType = {
+  id:string,
+  copyId: string,
+  img: string
+  userName: string
+  userEmail: string,
+  borrowingDate: string,
+  returnDate: string,
+  fine:number
 }
 
-export const columns: ColumnDef<ReservationType>[] = [
-
+export const columns: ColumnDef<BorrowingType>[] = [
   {
-    accessorKey: "name",
-    header: "Name",
+    accessorKey: "img",
+    header: "Image",
     cell: ({ row }) => (
-      <div className="capitalize my-5">{row.getValue("name")}</div>
+      <img src={row.getValue("img")} className="h-14 text-centre"></img>
     ),
   },
   {
-    accessorKey: "email",
-    header: ({ column }) => {
-      return (
-        <span
-          className="flex items-center gap-2 cursor-pointer"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Email
-          <ArrowUpDown size={15} />
-        </span>
-      )
-    },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("email")}</div>,
+    accessorKey: "userName",
+    header: "User Name",
+    cell: ({ row }) => (
+      <div className="capitalize my-5">{row.getValue("userName")}</div>
+    ),
   },
   {
-    accessorKey: "bookName",
+    accessorKey: "userEmail",
     header: ({ column }) => {
       return (
         <span
           className="flex items-center gap-2 cursor-pointer"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Reserved Book
-          <ArrowUpDown size={15} />
+          User Email
+          <ArrowUpDown size={15}/>
         </span>
       )
     },
+    cell: ({ row }) => <div className="lowercase">{row.getValue("userEmail")}</div>,
   },
   {
-    accessorKey: "reservationTime",
+    accessorKey: "borrowingDate",
     header: ({ column }) => {
       return (
         <span
           className="flex items-center gap-2 cursor-pointer"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Reservation Time
+          Borrowing Date
           <ArrowUpDown size={15} />
         </span>
       )
     },
+    cell: ({ row }) => <div >{row.getValue("borrowingDate")}</div>,
   },
 
-
+  {
+    accessorKey: "returnDate",
+    header: ({ column }) => {
+      return (
+        <span
+          className="flex items-center gap-2 cursor-pointer"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Return Date
+          <ArrowUpDown size={15} />
+        </span>
+      )
+    },
+    cell: ({ row }) => <div >{row.getValue("returnDate")}</div>,
+  },
+  {
+    accessorKey: "fine",
+    header: ({ column }) => {
+      return (
+        <span
+          className="flex items-center gap-2 cursor-pointer"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Fine
+          <ArrowUpDown size={15} />
+        </span>
+      )
+    },
+    cell: ({ row }) => <div >{row.getValue("fine")}</div>,
+  },
 
   {
     id: "actions",
     header: () => <div className="text-right">Action</div>,
     enableHiding: false,
-    cell: ({ row }) => {
-      const user = row.original;
+    cell: ({ }) => {
+
 
       return (
         <div className="flex justify-end">
@@ -113,14 +141,11 @@ export const columns: ColumnDef<ReservationType>[] = [
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <DropdownMenuLabel>Actions</DropdownMenuLabel>
-              <DropdownMenuItem
-                onClick={() => navigator.clipboard.writeText(user.id)}
-              >
-                Copy User ID
-              </DropdownMenuItem>
+
               <DropdownMenuSeparator />
               <DropdownMenuItem>View Details</DropdownMenuItem>
-              <DropdownMenuItem className="text-red-400 focus:text-red-500">Remove</DropdownMenuItem>
+              <DropdownMenuItem className="text-blue-400 focus:text-blue-500 ">Edit</DropdownMenuItem>
+              <DropdownMenuItem className="text-red-400 focus:text-red-500">Return</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
@@ -129,7 +154,7 @@ export const columns: ColumnDef<ReservationType>[] = [
   }
 ]
 
-export function ReservationsTable() {
+export function BorrowingTable() {
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -142,11 +167,12 @@ export function ReservationsTable() {
     pageSize: 5,
   })
 
+
+
   const table = useReactTable({
     data,
     columns,
     onSortingChange: setSorting,
-    onPaginationChange: setPagination,
     onColumnFiltersChange: setColumnFilters,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
@@ -154,24 +180,26 @@ export function ReservationsTable() {
     getFilteredRowModel: getFilteredRowModel(),
     onColumnVisibilityChange: setColumnVisibility,
     onRowSelectionChange: setRowSelection,
+    onPaginationChange: setPagination,
     state: {
       sorting,
       columnFilters,
       columnVisibility,
       rowSelection,
       pagination
-
     },
   })
+  console.log("Current Page Index:", table.getState().pagination.pageIndex);
+  console.log("Total Pages:", table.getPageCount());
 
   return (
-    <div className="w-ful">
-      <div className="flex items-center py-2">
+    <div className="w-full">
+      <div className="flex items-center py-4">
         <Input
           placeholder="Search Library By Name..."
-          value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
+          value={(table.getColumn("userName")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
-            table.getColumn("name")?.setFilterValue(event.target.value)
+            table.getColumn("userName")?.setFilterValue(event.target.value)
           }
           className="max-w-sm bg-white"
         />

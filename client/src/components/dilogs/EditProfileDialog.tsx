@@ -9,8 +9,9 @@ import {
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { DialogDescription } from "@radix-ui/react-dialog"
 
-export function AddBookDialog({children}:{children:React.ReactNode}) {
+export function EditProfileDialog({children}:{children:React.ReactNode}) {
 
   return (
     <Dialog>
@@ -19,61 +20,47 @@ export function AddBookDialog({children}:{children:React.ReactNode}) {
       </DialogTrigger>
       <DialogContent className="sm:max-w-[725px] w-[90vw] rounded-md">
         <DialogHeader>
-          <DialogTitle>Add New Book</DialogTitle>
+          <DialogTitle>Edit profile</DialogTitle>
+
+        <DialogDescription>
+
+            Make changes to your profile here. Click save when you're done.
+          </DialogDescription>
         </DialogHeader>
         <form className="grid  gap-4 py-4">
           <div className="grid grid-cols-2  w-full gap-4">
             <div className=" ">
-                <Label>Book Name</Label>
+                <Label>User Name</Label>
                 <Input type="text" placeholder="" />
             </div>
             <div className="">
-                <Label>Book Author</Label>
+                <Label>Email</Label>
                 <Input type="text" placeholder="" />
             </div>
           </div>
 
           <div className="grid grid-cols-2  w-full gap-4">
             <div className=" ">
-                <Label>Book Publisher</Label>
+                <Label>Locatin</Label>
                 <Input type="text" placeholder="" />
             </div>
             <div className="">
-                <Label>Book Genre</Label>
+                <Label>Contact Number</Label>
                 <Input type="text" placeholder="" />
             </div>
           </div>
 
-          <div className="grid grid-cols-2  w-full gap-4">
-            <div className=" ">
-                <Label>Edition</Label>
-                <Input type="text" placeholder="" />
-            </div>
-            <div className="">
-                <Label>ISBN Number</Label>
-                <Input type="text" placeholder="" />
-            </div>
-          </div>
-          <div className="grid grid-cols-2  w-full gap-4">
           
-            <div className=" ">
-                <Label>Book Price</Label>
-                <Input type="text" placeholder="" />
-            </div>
-            <div className="">
-                <Label>Book Stock</Label>
-                <Input type="text" placeholder="" />
-            </div>
-          </div>
+        
           <div className="grid grid-cols-2">
           <div className=" ">
-                <Label>Image</Label>
+                <Label>Valid Document</Label>
                 <Input type="file" placeholder="" />
             </div>
           </div>
           
           <DialogFooter>
-          <Button type="submit">Add Book</Button>
+          <Button type="submit">Save Changes</Button>
         </DialogFooter>
         </form>
      
