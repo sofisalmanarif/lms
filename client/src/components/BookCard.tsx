@@ -7,7 +7,7 @@ import { Book } from "@/data/data"
 
 const BookCard = ({book}:{book?:Book}) => {
     return (
-        <div className="min-w-[45vw] h-[28vh] sm:min-w-[30vw]  sm:min-h-[35vh]  xl:min-w-[17vw] xl:max-w-[17vw]  border-[1px] shadow-lg sm:bg-red xl:h-[38vh] xl:bg-orange-  2xl:bg-gray  border-gray-200  rounded-lg  2xl:min-w-[15vw]  2xl:h-[38vh] 2xl:w-[14vw]    place-items-stretch mb-0 p-2 sm:pb-4 ">
+        <div className="min-w-[45vw] h-[31vh] sm:min-w-[30vw]  sm:min-h-[35vh]  xl:min-w-[17vw] xl:max-w-[17vw]  border-[1px] shadow-lg sm:bg-red xl:h-[38vh] xl:bg-orange-  2xl:bg-gray  border-gray-200  rounded-lg  2xl:min-w-[15vw]  2xl:h-[38vh] 2xl:w-[14vw]    place-items-stretch mb-0 p-2 sm:pb-4 ">
           <Link to={`/book/${book?.id}`} className="xl:h-[50%]  h-[45%] w-full bg-gray-300/50  rounded-md flex items-center justify-between">
 
             <img src={book?.image} className="h-[80%]  mx-auto  " alt="" />
