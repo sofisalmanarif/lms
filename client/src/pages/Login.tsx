@@ -57,8 +57,8 @@ const Login = () => {
 
 
     return (
-        <div className="w-full max-w-[1920px] mx-auto  h-screen  flex ">
-            <div className="sm:w-[50%] w-full flex flex-col relative px-0 items-center justify-center ">
+        <main className="w-full max-w-[1920px] mx-auto  h-screen  flex ">
+            <section className="sm:w-[50%] w-full flex flex-col relative px-0 items-center justify-center ">
                 <div className="flex flex-col  sm:w-[50%] w-full text-left items-center  gap-6">
                     <h2 className="text-4xl font-bold sm:-ml-[70px] -ml-[36px] ">Welcome back</h2>
                     <form onSubmit={loginHandler} className="flex w-[70%] flex-col gap-4 ">
@@ -88,11 +88,11 @@ const Login = () => {
                     <TypographyP className="text-sm sm:-ml-[116px] ">Dont have an account? <Link className="text-blue-700 font-semibold" to={"/register"}>Sign Up</Link> </TypographyP>
                 </div>
                 <AuthFooter />
-            </div>
+            </section>
             <AuthSideBar />
 
 
-        </div>
+        </main>
     )
 }
 
