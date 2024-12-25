@@ -17,18 +17,18 @@ export function ProfileTabs() {
       </TabsList>
       <p className="border-b-[1px] border-gray-200 sm:mb-4"></p>
       <TabsContent value="borrowings">
-        
-                    
-                    <div className="flex sm:justify-between sm:px-1 px-0 gap-4 w-full py-1  overflow-x-scroll scrollbar-hide">
+
+
+        <div className="flex sm:justify-between sm:px-1 px-0 gap-4 w-full py-1  overflow-x-scroll scrollbar-hide">
           <BorrowingBookCard bgColor="#B9CFED" />
-          <BorrowingBookCard bgColor="#A0D1F3"/>
-          <BorrowingBookCard bgColor="#B9CFED"/>
-          <BorrowingBookCard bgColor="#B9CFED"/>
+          <BorrowingBookCard bgColor="#A0D1F3" />
+          <BorrowingBookCard bgColor="#B9CFED" />
+          <BorrowingBookCard bgColor="#B9CFED" />
         </div>
 
       </TabsContent>
       <TabsContent value="reservations">
-        <ReservationTable/> 
+        <ReservationTable />
       </TabsContent>
     </Tabs>
   )
@@ -36,19 +36,19 @@ export function ProfileTabs() {
 
 
 
-function BorrowingBookCard({bgColor}:{bgColor:string}){
-    return(
-      <div className="sm:w-[400px] sm:max-w-[400px] min-w-[200px] max-w-[200px]  flex flex-col gap-2 ">
-        <div className={`flex items-center  w-[100%] backdrop:blur-sm justify-center bg-${bgColor} rounded-3xl py-4 shadow-sm`} style={{backgroundColor:bgColor}}>
-          <img src="/book.png" alt="" />
-  
-        </div>
-        <div className="flex flex-col gap-1">
-        
+function BorrowingBookCard({ bgColor }: { bgColor: string }) {
+  return (
+    <div className="sm:w-[400px] sm:max-w-[400px] min-w-[200px] max-w-[200px]  flex flex-col gap-2 ">
+      <div className={`flex items-center  w-[100%] backdrop:blur-sm justify-center bg-${bgColor} rounded-3xl py-4 shadow-sm`} style={{ backgroundColor: bgColor }}>
+        <img src="/book.png" alt="" />
+
+      </div>
+      <div className="flex flex-col gap-1">
+
         <TypographySmall>You Don't know js</TypographySmall>
         <TypographySmall >You Don't know js</TypographySmall>
-        </div>
-  
       </div>
-    )
-  }
+
+    </div>
+  )
+}

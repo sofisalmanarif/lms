@@ -5,11 +5,11 @@ import RecentSection from "@/components/RecentSection"
 const Home = () => {
   return (
     <div>
-        <Hero/>
-        <Genere/>
-        <RecentSection/>
-                
-        {/* <Hero/> */}
+      <Hero />
+      <Genere />
+      <RecentSection />
+
+      {/* <Hero/> */}
     </div>
   )
 }
