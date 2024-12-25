@@ -1,7 +1,7 @@
  
 import { Button } from "@/components/ui/button"
 import { Link } from "react-router-dom"
-import { TypographyP } from "./Typogrphies"
+// import { TypographyP } from "./Typogrphies"
 import { Book } from "@/data/data"
 
 
