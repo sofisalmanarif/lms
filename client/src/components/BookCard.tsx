@@ -7,12 +7,12 @@ import { Book } from "@/data/data"
 
 const BookCard = ({book}:{book?:Book}) => {
     return (
-        <div className="md:w-[16vw] border-[1px] border-gray-200  rounded-lg md:max-w-[18vw] min-w-[45.2vw] md:min-w-[17vw]  max-w-[47vw]  md:h-[40vh] min-h-[31vh]   md:max-h-[60vh] place-items-stretch mb-0 p-2 sm:pb-4 ">
-          <Link to={`/book/${book?.id}`} className="md:h-[10vw] h-[45%] w-full bg-gray-300/50  rounded-md flex items-center justify-between">
+        <div className="min-w-[45vw] h-[28vh] sm:min-w-[30vw]  sm:min-h-[35vh]  xl:min-w-[17vw] xl:max-w-[17vw]  border-[1px] shadow-lg sm:bg-red xl:h-[38vh] xl:bg-orange-  2xl:bg-gray  border-gray-200  rounded-lg  2xl:min-w-[15vw]  2xl:h-[38vh] 2xl:w-[14vw]    place-items-stretch mb-0 p-2 sm:pb-4 ">
+          <Link to={`/book/${book?.id}`} className="xl:h-[50%]  h-[45%] w-full bg-gray-300/50  rounded-md flex items-center justify-between">
 
-            <img src={book?.image} className="md:h-[8vw]  mx-auto h-24 " alt="" />
+            <img src={book?.image} className="h-[80%]  mx-auto  " alt="" />
           </Link>
-          <div className="flex flex-col justify-evenly  md:h-[35%] h-[40%] px-1 sm:py-2 py-1 my-t" >
+          <div className="flex flex-col justify-evenly sm:h-[45%] xl:h-[40%]  h-[40%] px-1 sm:py-2 py-1 my-t" >
             <p className="text-green-500 px-1 text-center sm:text-sm text-[8px] block items-center justify-center bg-green-200/25 border-[1px]  border-green-300 w-auto mx-auto rounded-md mb-1  ">{book?.genre}</p>
             <div className="text-xs text-gray-600 sm:text-sm flex flex-col sm:my-2 ">
   
@@ -26,7 +26,7 @@ const BookCard = ({book}:{book?:Book}) => {
             {/* <span>Edition:Kyle Simpson</span> */}
             </div>
           </div>
-          <div className="w-full mx-0 sm:p-0 mt-1   bg-red-200 ">
+          <div className="w-full mx-0 sm:p-0  ">
             
             <Button  variant={"default"} size={"sm"} className="w-full font-semibold mb-0">Reserve Book</Button>
           </div>
