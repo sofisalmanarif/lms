@@ -9,7 +9,7 @@ const RecentSection = () => {
       <TypographyH2 className="text-center">
         Recently Added Books
       </TypographyH2>
-      <div className="flex xl:max-h-[60vh] justify-between overflow-x-scroll sm:gap-6 gap-4">
+      <div className="flex xl:max-h-[60vh] min-h-[25rem] justify-between  overflow-x-scroll sm:gap-6 gap-4">
         {
           books.slice(0, 5).map((book) => (
             <BookCard key={book.id} book={book} />
