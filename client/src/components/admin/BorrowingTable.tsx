@@ -1,21 +1,6 @@
-import * as React from "react"
-import {
-  ColumnDef,
-  ColumnFiltersState,
-  PaginationState,
-  SortingState,
-  VisibilityState,
-
-  getCoreRowModel,
-  getFilteredRowModel,
-  getPaginationRowModel,
-  getSortedRowModel,
-  useReactTable,
-} from "@tanstack/react-table"
+import { ColumnDef } from "@tanstack/react-table"
 import { ArrowUpDown, ChevronDown, MoreVertical } from "lucide-react"
-
 import { Button } from "@/components/ui/button"
-// import { Checkbox } from "@/components/ui/checkbox"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -27,23 +12,24 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Input } from "@/components/ui/input"
 import DataTable from "../Dashboard/DataTable"
+import { useTableConfig } from "@/hooks/use-table"
 
 const data: BorrowingType[] = [
-  {id:"hghdfghdg", copyId: "jehyerwu7", img: "/book.png", userName: "salman", userEmail: "salmanauthor", borrowingDate: '21-11-24', returnDate: "21-1-25",fine:79 },
-  {id:"jhdghsgdf", copyId: "aiwopei28", img: "/book.png", userName: "moomin", userEmail: "aisha@example.com", borrowingDate: '1-9-24', returnDate: "1-1-25",fine:66 },
+  { id: "hghdfghdg", copyId: "jehyerwu7", img: "/book.png", userName: "salman", userEmail: "salmanauthor", borrowingDate: '21-11-24', returnDate: "21-1-25", fine: 79 },
+  { id: "jhdghsgdf", copyId: "aiwopei28", img: "/book.png", userName: "moomin", userEmail: "aisha@example.com", borrowingDate: '1-9-24', returnDate: "1-1-25", fine: 66 },
 
 
 ]
 
 export type BorrowingType = {
-  id:string,
+  id: string,
   copyId: string,
   img: string
   userName: string
   userEmail: string,
   borrowingDate: string,
   returnDate: string,
-  fine:number
+  fine: number
 }
 
 export const columns: ColumnDef<BorrowingType>[] = [
@@ -70,7 +56,7 @@ export const columns: ColumnDef<BorrowingType>[] = [
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           User Email
-          <ArrowUpDown size={15}/>
+          <ArrowUpDown size={15} />
         </span>
       )
     },
@@ -155,42 +141,7 @@ export const columns: ColumnDef<BorrowingType>[] = [
 ]
 
 export function BorrowingTable() {
-  const [sorting, setSorting] = React.useState<SortingState>([])
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-    []
-  )
-  const [columnVisibility, setColumnVisibility] =
-    React.useState<VisibilityState>({})
-  const [rowSelection, setRowSelection] = React.useState({})
-  const [pagination, setPagination] = React.useState<PaginationState>({
-    pageIndex: 0,
-    pageSize: 5,
-  })
-
-
-
-  const table = useReactTable({
-    data,
-    columns,
-    onSortingChange: setSorting,
-    onColumnFiltersChange: setColumnFilters,
-    getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-    getSortedRowModel: getSortedRowModel(),
-    getFilteredRowModel: getFilteredRowModel(),
-    onColumnVisibilityChange: setColumnVisibility,
-    onRowSelectionChange: setRowSelection,
-    onPaginationChange: setPagination,
-    state: {
-      sorting,
-      columnFilters,
-      columnVisibility,
-      rowSelection,
-      pagination
-    },
-  })
-  console.log("Current Page Index:", table.getState().pagination.pageIndex);
-  console.log("Total Pages:", table.getPageCount());
+  const table = useTableConfig({ data, columns })    //custom hook for table congiguration
 
   return (
     <div className="w-full">

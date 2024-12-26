@@ -1,17 +1,15 @@
-import Genere from "@/components/Genere"
-import Hero from "@/components/Hero"
-import RecentSection from "@/components/RecentSection"
+import Genere from "@/components/Genere";
+import Hero from "@/components/Hero";
+import RecentSection from "@/components/RecentSection";
 
 const Home = () => {
-  return (
-    <div>
-      <Hero />
-      <Genere />
-      <RecentSection />
+    return (
+        <div>
+            <Hero />
+            <Genere />
+            <RecentSection />
+        </div>
+    );
+};
 
-      {/* <Hero/> */}
-    </div>
-  )
-}
-
-export default Home
+export default Home;

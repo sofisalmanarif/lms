@@ -1,16 +1,4 @@
-import * as React from "react"
-import {
-  ColumnDef,
-  ColumnFiltersState,
-  PaginationState,
-  SortingState,
-  VisibilityState,
-  getCoreRowModel,
-  getFilteredRowModel,
-  getPaginationRowModel,
-  getSortedRowModel,
-  useReactTable,
-} from "@tanstack/react-table"
+import { ColumnDef } from "@tanstack/react-table"
 import { ArrowUpDown, ChevronDown, MoreVertical } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
@@ -27,36 +15,37 @@ import {
 import { Input } from "@/components/ui/input"
 
 import DataTable from "../Dashboard/DataTable"
+import { useTableConfig } from "@/hooks/use-table"
 
 const data: User[] = [
-    { id: "jehyerwu7", name: "Salman", email: "salman@gmail.com", contactNumber: 73774674, location: "Karachi" },
-    { id: "aiwopei28", name: "Aisha", email: "aisha@example.com", contactNumber: 83927541, location: "Lahore" },
-    { id: "rtyesl003", name: "Ahmed", email: "ahmed@example.com", contactNumber: 12345987, location: "Islamabad" },
-    { id: "zpoieaw44", name: "Zara", email: "zara@example.com", contactNumber: 74930458, location: "Faisalabad" },
-    { id: "mnvoeap22", name: "Bilal", email: "bilal@example.com", contactNumber: 47285936, location: "Peshawar" },
-    { id: "weuriuq78", name: "Farah", email: "farah@example.com", contactNumber: 63572840, location: "Multan" },
-    { id: "xwerpas91", name: "Ali", email: "ali@example.com", contactNumber: 78239546, location: "Quetta" },
-    { id: "sdkepow88", name: "Hassan", email: "hassan@example.com", contactNumber: 84620571, location: "Sialkot" },
-    { id: "fgeirpa72", name: "Maria", email: "maria@example.com", contactNumber: 28374659, location: "Hyderabad" },
-    { id: "vnmseor61", name: "Omar", email: "omar@example.com", contactNumber: 56482901, location: "Rawalpindi" },
-    { id: "jwlpueas33", name: "Samina", email: "samina@example.com", contactNumber: 90384756, location: "Gujranwala" },
-    { id: "zcxwer88a", name: "Saad", email: "saad@example.com", contactNumber: 24563789, location: "Sukkur" },
-    { id: "vmsdoe45n", name: "Nadia", email: "nadia@example.com", contactNumber: 75893046, location: "Abbottabad" },
-    { id: "asdjke82o", name: "Hiba", email: "hiba@example.com", contactNumber: 92384657, location: "Bahawalpur" },
-    { id: "cvnmseq23", name: "Usman", email: "usman@example.com", contactNumber: 57638492, location: "Sargodha" },
-    { id: "qweopzx99", name: "Anum", email: "anum@example.com", contactNumber: 48263790, location: "Gilgit" },
-    { id: "bvcnxzq87", name: "Talha", email: "talha@example.com", contactNumber: 83629547, location: "Mardan" },
-    { id: "qweoiur44", name: "Irfan", email: "irfan@example.com", contactNumber: 59384627, location: "Muzaffarabad" },
-    { id: "asdkler12", name: "Sana", email: "sana@example.com", contactNumber: 63829475, location: "Jhelum" },
-    { id: "nbvczqp08", name: "Hafsa", email: "hafsa@example.com", contactNumber: 83729456, location: "Chitral" },
-  ]
+  { id: "jehyerwu7", name: "Salman", email: "salman@gmail.com", contactNumber: 73774674, location: "Karachi" },
+  { id: "aiwopei28", name: "Aisha", email: "aisha@example.com", contactNumber: 83927541, location: "Lahore" },
+  { id: "rtyesl003", name: "Ahmed", email: "ahmed@example.com", contactNumber: 12345987, location: "Islamabad" },
+  { id: "zpoieaw44", name: "Zara", email: "zara@example.com", contactNumber: 74930458, location: "Faisalabad" },
+  { id: "mnvoeap22", name: "Bilal", email: "bilal@example.com", contactNumber: 47285936, location: "Peshawar" },
+  { id: "weuriuq78", name: "Farah", email: "farah@example.com", contactNumber: 63572840, location: "Multan" },
+  { id: "xwerpas91", name: "Ali", email: "ali@example.com", contactNumber: 78239546, location: "Quetta" },
+  { id: "sdkepow88", name: "Hassan", email: "hassan@example.com", contactNumber: 84620571, location: "Sialkot" },
+  { id: "fgeirpa72", name: "Maria", email: "maria@example.com", contactNumber: 28374659, location: "Hyderabad" },
+  { id: "vnmseor61", name: "Omar", email: "omar@example.com", contactNumber: 56482901, location: "Rawalpindi" },
+  { id: "jwlpueas33", name: "Samina", email: "samina@example.com", contactNumber: 90384756, location: "Gujranwala" },
+  { id: "zcxwer88a", name: "Saad", email: "saad@example.com", contactNumber: 24563789, location: "Sukkur" },
+  { id: "vmsdoe45n", name: "Nadia", email: "nadia@example.com", contactNumber: 75893046, location: "Abbottabad" },
+  { id: "asdjke82o", name: "Hiba", email: "hiba@example.com", contactNumber: 92384657, location: "Bahawalpur" },
+  { id: "cvnmseq23", name: "Usman", email: "usman@example.com", contactNumber: 57638492, location: "Sargodha" },
+  { id: "qweopzx99", name: "Anum", email: "anum@example.com", contactNumber: 48263790, location: "Gilgit" },
+  { id: "bvcnxzq87", name: "Talha", email: "talha@example.com", contactNumber: 83629547, location: "Mardan" },
+  { id: "qweoiur44", name: "Irfan", email: "irfan@example.com", contactNumber: 59384627, location: "Muzaffarabad" },
+  { id: "asdkler12", name: "Sana", email: "sana@example.com", contactNumber: 63829475, location: "Jhelum" },
+  { id: "nbvczqp08", name: "Hafsa", email: "hafsa@example.com", contactNumber: 83729456, location: "Chitral" },
+]
 
 export type User = {
   id: string
   name: string
   email: string,
   contactNumber: number,
-  location :string
+  location: string
 }
 
 export const columns: ColumnDef<User>[] = [
@@ -73,11 +62,11 @@ export const columns: ColumnDef<User>[] = [
     header: ({ column }) => {
       return (
         <span
-         className="flex items-center gap-2 cursor-pointer"
+          className="flex items-center gap-2 cursor-pointer"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Email
-          <ArrowUpDown  size={15}/>
+          <ArrowUpDown size={15} />
         </span>
       )
     },
@@ -90,7 +79,7 @@ export const columns: ColumnDef<User>[] = [
       <div className="">{row.getValue("contactNumber")}</div>
     ),
   },
-  
+
   {
     accessorKey: "location",
     header: () => <div className="">Location</div>,
@@ -98,7 +87,7 @@ export const columns: ColumnDef<User>[] = [
       <div className="">{row.getValue("location")}</div>
     ),
   },
-  
+
   {
     id: "actions",
     header: () => <div className="text-right">Action</div>,
@@ -106,7 +95,7 @@ export const columns: ColumnDef<User>[] = [
     cell: ({ row }) => {
       const library = row.original;
       console.log(library)
-  
+
       return (
         <div className="flex justify-end">
           <DropdownMenu>
@@ -118,7 +107,7 @@ export const columns: ColumnDef<User>[] = [
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <DropdownMenuLabel>Actions</DropdownMenuLabel>
-              
+
               <DropdownMenuSeparator />
               <DropdownMenuItem>View Details</DropdownMenuItem>
               <DropdownMenuSeparator />
@@ -133,42 +122,9 @@ export const columns: ColumnDef<User>[] = [
 ]
 
 export function UserRequestTable() {
-  const [sorting, setSorting] = React.useState<SortingState>([])
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-    []
-  )
-  const [columnVisibility, setColumnVisibility] =
-    React.useState<VisibilityState>({})
-  const [rowSelection, setRowSelection] = React.useState({})
-  const [pagination, setPagination] = React.useState<PaginationState>({
-        pageIndex: 0,
-        pageSize: 5,
-      })
 
-  const table = useReactTable({
-    data,
-    columns,
-   
-    onSortingChange: setSorting,
-    onColumnFiltersChange: setColumnFilters,
-    getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-    getSortedRowModel: getSortedRowModel(),
-    getFilteredRowModel: getFilteredRowModel(),
-    onColumnVisibilityChange: setColumnVisibility,
-    onRowSelectionChange: setRowSelection,
-    onPaginationChange:setPagination,
-    state: {
-      sorting,
-      columnFilters,
-      columnVisibility,
-      rowSelection,
-      pagination
 
-    },
-  })
-  console.log("Current Page Index:", table.getState().pagination.pageIndex);
-  console.log("admins Total Pages:", table.getPageCount());
+  const table = useTableConfig({ data, columns })    //custom hook for table congiguration
 
   return (
     <div className="w-full overflow-x-scroll">
@@ -209,7 +165,7 @@ export function UserRequestTable() {
         </DropdownMenu>
       </div>
       <div className="rounded-md border bg-white w-full overflow-x-scroll px-2">
-      <DataTable columns={columns} table={table} />
+        <DataTable columns={columns} table={table} />
       </div>
       <div className="flex items-center justify-end space-x-2 py-4">
         <div className="space-x-2">

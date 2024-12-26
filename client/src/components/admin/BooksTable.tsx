@@ -1,21 +1,6 @@
-import * as React from "react"
-import {
-  ColumnDef,
-  ColumnFiltersState,
-  PaginationState,
-  SortingState,
-  VisibilityState,
-
-  getCoreRowModel,
-  getFilteredRowModel,
-  getPaginationRowModel,
-  getSortedRowModel,
-  useReactTable,
-} from "@tanstack/react-table"
+import {ColumnDef,} from "@tanstack/react-table"
 import { ArrowUpDown, ChevronDown, MoreVertical } from "lucide-react"
-
 import { Button } from "@/components/ui/button"
-// import { Checkbox } from "@/components/ui/checkbox"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -27,6 +12,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Input } from "@/components/ui/input"
 import DataTable from "../Dashboard/DataTable"
+import { useTableConfig } from "@/hooks/use-table"
 
 const data: BookType[] = [
   { id: "jehyerwu7", img: "/book.png", name: "You Dont't Know js", author: "salmanauthor", stock: 73774674, availableStock: 2 },
@@ -79,7 +65,7 @@ export const columns: ColumnDef<BookType>[] = [
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Author
-          <ArrowUpDown size={15}/>
+          <ArrowUpDown size={15} />
         </span>
       )
     },
@@ -149,42 +135,7 @@ export const columns: ColumnDef<BookType>[] = [
 ]
 
 export function BooksTable() {
-  const [sorting, setSorting] = React.useState<SortingState>([])
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-    []
-  )
-  const [columnVisibility, setColumnVisibility] =
-    React.useState<VisibilityState>({})
-  const [rowSelection, setRowSelection] = React.useState({})
-  const [pagination, setPagination] = React.useState<PaginationState>({
-    pageIndex: 0,
-    pageSize: 5,
-  })
-
-
-
-  const table = useReactTable({
-    data,
-    columns,
-    onSortingChange: setSorting,
-    onColumnFiltersChange: setColumnFilters,
-    getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-    getSortedRowModel: getSortedRowModel(),
-    getFilteredRowModel: getFilteredRowModel(),
-    onColumnVisibilityChange: setColumnVisibility,
-    onRowSelectionChange: setRowSelection,
-    onPaginationChange: setPagination,
-    state: {
-      sorting,
-      columnFilters,
-      columnVisibility,
-      rowSelection,
-      pagination
-    },
-  })
-  console.log("Current Page Index:", table.getState().pagination.pageIndex);
-  console.log("Total Pages:", table.getPageCount());
+  const table = useTableConfig({ data, columns })    //custom hook for table congiguration
 
   return (
     <div className="w-full">

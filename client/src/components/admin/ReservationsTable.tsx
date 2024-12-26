@@ -1,16 +1,4 @@
-import * as React from "react"
-import {
-  ColumnDef,
-  ColumnFiltersState,
-  PaginationState,
-  SortingState,
-  VisibilityState,
-  getCoreRowModel,
-  getFilteredRowModel,
-  getPaginationRowModel,
-  getSortedRowModel,
-  useReactTable,
-} from "@tanstack/react-table"
+import { ColumnDef } from "@tanstack/react-table"
 import { ArrowUpDown, ChevronDown, MoreVertical } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
@@ -25,6 +13,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Input } from "@/components/ui/input"
 import DataTable from "../Dashboard/DataTable"
+import { useTableConfig } from "@/hooks/use-table"
 
 const data: ReservationType[] = [
   { id: "jehyerwu7", name: "Salman", email: "salman@gmail.com", bookName: "You dont know js", reservationTime: "10:00 AM", receivingTime: "11:30 AM" },
@@ -130,39 +119,7 @@ export const columns: ColumnDef<ReservationType>[] = [
 ]
 
 export function ReservationsTable() {
-  const [sorting, setSorting] = React.useState<SortingState>([])
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-    []
-  )
-  const [columnVisibility, setColumnVisibility] =
-    React.useState<VisibilityState>({})
-  const [rowSelection, setRowSelection] = React.useState({})
-  const [pagination, setPagination] = React.useState<PaginationState>({
-    pageIndex: 0,
-    pageSize: 5,
-  })
-
-  const table = useReactTable({
-    data,
-    columns,
-    onSortingChange: setSorting,
-    onPaginationChange: setPagination,
-    onColumnFiltersChange: setColumnFilters,
-    getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-    getSortedRowModel: getSortedRowModel(),
-    getFilteredRowModel: getFilteredRowModel(),
-    onColumnVisibilityChange: setColumnVisibility,
-    onRowSelectionChange: setRowSelection,
-    state: {
-      sorting,
-      columnFilters,
-      columnVisibility,
-      rowSelection,
-      pagination
-
-    },
-  })
+  const table = useTableConfig({ data, columns })    //custom hook for table congiguration
 
   return (
     <div className="w-ful">
