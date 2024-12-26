@@ -1,5 +1,5 @@
 
-export function Dashboard() {
+function Dashboard() {
   return (
     
        
@@ -14,3 +14,4 @@ export function Dashboard() {
       
   )
 }
+export default Dashboard

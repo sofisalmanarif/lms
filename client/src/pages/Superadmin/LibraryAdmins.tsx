@@ -2,7 +2,7 @@ import { AdminLibraryTable } from "@/components/Dashboard/AdminLibraryTable";
 import { TypographyTableH2 } from "@/components/Typogrphies";
 
 
-export function LibraryAdmins() {
+function LibraryAdmins() {
   return (
 
         <div className="flex flex-1 flex-col bg-orange-100/10  max-h-[93vh] sm:gap-4 sm:px-20 gap-0 p-4 ">
@@ -15,3 +15,5 @@ export function LibraryAdmins() {
       
   )
 }
+
+export default LibraryAdmins

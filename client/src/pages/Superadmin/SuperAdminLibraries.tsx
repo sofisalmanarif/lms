@@ -3,7 +3,7 @@ import { LibraryTable } from "@/components/Dashboard/LibraryTable"
 import { TypographyTableH2 } from "@/components/Typogrphies"
 
 
-export function SuperAdminLibraries() {
+function SuperAdminLibraries() {
   return (
     
         <div className="flex flex-1 flex-col bg-orange-100/10 max-h-[93vh] sm:gap-4 sm:px-20 gap-0 p-4 ">
@@ -16,3 +16,5 @@ export function SuperAdminLibraries() {
       
   )
 }
+
+export default SuperAdminLibraries

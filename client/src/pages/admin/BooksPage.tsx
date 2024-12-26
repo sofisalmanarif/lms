@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import { PlusIcon } from "lucide-react"
 
 
-export function BooksPage() {
+function BooksPage() {
   return (
 
     <div className="flex flex-1 z-10 flex-col  max-h-[93vh] bg-orange-100/10 sm:gap-4 sm:px-20 gap-0 p-4 ">
@@ -20,3 +20,5 @@ export function BooksPage() {
 
   )
 }
+
+export default BooksPage
