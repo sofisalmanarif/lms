@@ -1,17 +1,4 @@
-import * as React from "react"
-import {
-  ColumnDef,
-  ColumnFiltersState,
-  PaginationState,
-  SortingState,
-  VisibilityState,
-
-  getCoreRowModel,
-  getFilteredRowModel,
-  getPaginationRowModel,
-  getSortedRowModel,
-  useReactTable,
-} from "@tanstack/react-table"
+import { ColumnDef } from "@tanstack/react-table"
 import { ArrowUpDown, ChevronDown, MoreVertical } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
@@ -27,6 +14,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Input } from "@/components/ui/input"
 import DataTable from "./DataTable"
+import { useTableConfig } from "@/hooks/use-table"
 
 const data: Library[] = [
   { id: "jehyerwu7", img: "/book.png", name: "Salman", email: "salman@gmail.com", licenceNo: 73774674, location: "Karachi" },
@@ -133,42 +121,8 @@ export const columns: ColumnDef<Library>[] = [
 ]
 
 export function LinraryRequestTable() {
-  const [sorting, setSorting] = React.useState<SortingState>([])
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-    []
-  )
-  const [columnVisibility, setColumnVisibility] =
-    React.useState<VisibilityState>({})
-  const [rowSelection, setRowSelection] = React.useState({})
-  const [pagination, setPagination] = React.useState<PaginationState>({
-    pageIndex: 0,
-    pageSize: 5,
-  })
 
-
-
-  const table = useReactTable({
-    data,
-    columns,
-    onSortingChange: setSorting,
-    onColumnFiltersChange: setColumnFilters,
-    getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-    getSortedRowModel: getSortedRowModel(),
-    getFilteredRowModel: getFilteredRowModel(),
-    onColumnVisibilityChange: setColumnVisibility,
-    onRowSelectionChange: setRowSelection,
-    onPaginationChange: setPagination,
-    state: {
-      sorting,
-      columnFilters,
-      columnVisibility,
-      rowSelection,
-      pagination
-    },
-  })
-  console.log("Current Page Index:", table.getState().pagination.pageIndex);
-  console.log("Total Pages:", table.getPageCount());
+  const table = useTableConfig({ data, columns })    //custom hook for table congiguration
 
   return (
     <div className="w-full">
