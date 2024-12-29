@@ -1,13 +1,20 @@
-import express from "express"
+import express, { urlencoded } from "express"
 import logger from "./logger.js";
 import morgan from "morgan";
+import cors from "cors"
 
 
 const app = express()
 
 
 const morganFormat = ":method :url :status :response-time ms";
+const corsOptions = {
+    origin: 'http://localhost:5173',
+    credentials: true
+}
 
+
+// middlewares
 app.use(
     morgan(morganFormat, {
         stream: {
@@ -23,6 +30,11 @@ app.use(
         },
     })
 );
+app.use(cors(corsOptions))
+app.use(express.json())
+app.use(express.urlencoded({
+    extended:true
+}))
 
 app.get("/", (req, res) => {
     res.send("hello world")
