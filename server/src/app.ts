@@ -1,8 +1,9 @@
 import express, { urlencoded } from "express"
-import logger from "./logger.js";
+import logger from "./utils/logger.js";
 import morgan from "morgan";
 import cors from "cors"
-
+import ApiResponse from "./utils/ApiResponse.js";
+import { userType } from "./types/user.types.js";
 
 const app = express()
 
@@ -37,7 +38,10 @@ app.use(express.urlencoded({
 }))
 
 app.get("/", (req, res) => {
-    res.send("hello world")
+    res.status(200).json(new ApiResponse<userType[]>(400,[{
+        name:"John Doe",
+        email:"john@example.com"
+    }],"user created") )
 })
 
 
