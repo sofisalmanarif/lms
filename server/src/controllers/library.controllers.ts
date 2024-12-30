@@ -5,12 +5,12 @@ import ApiResponse from "../utils/ApiResponse.js";
 
 
 
-export const registerLibrary = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+export const registerLibrary = async (req: Request, res: Response, next: NextFunction) => {
 
     const { name, email, address, adminName, licienceNo } = req.body
     console.log("body", req.body)
 
-    if (name?.trim() == "" || email?.trim() == "" || address?.trim() == "" || adminName?.trim() == "" || licienceNo?.trim() == "") {
+    if (name.trim() == "" || email.trim() == "" || address.trim() == "" || adminName.trim() == "" || licienceNo.trim() == "") {
         return next(new ErrorResponse(400, "All fields are required"));
     }
 
@@ -22,17 +22,21 @@ export const registerLibrary = async (req: Request, res: Response, next: NextFun
             lib_admin: adminName,
             lib_location: address,
             lib_licence: licienceNo
-
-
         })
+
         if (!createdlibrary) {
             return next(new ErrorResponse(400, "Failed to create library"))
         }
-        return res.status(201).json(new ApiResponse<string>(201, createdlibrary.lib_name, "Library Created Successfully"))
+
+        return res
+        .status(201)
+        .json(new ApiResponse<string>(201, createdlibrary.lib_name, "Library Created Successfully"))
+
     } catch (error) {
-        const x = error as Error
-        return next(new ErrorResponse(500, x.message));
-        console.log(error)
+        const err = error as Error
+        console.log(err)
+        return next(new ErrorResponse(500, err.message));
+        
 
     }
 }

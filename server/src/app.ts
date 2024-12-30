@@ -7,7 +7,6 @@ import { userType } from "./types/user.types.js";
 
 
 import libraryRouter from "./routes/library.routes.js"
-import ErrorResponse from "./utils/ErrorResponse.js";
 import { errorMiddleware } from "./middlewares/ErrorMiddleware.js";
 
 const app = express()
