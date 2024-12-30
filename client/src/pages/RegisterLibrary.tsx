@@ -3,16 +3,6 @@ import { Button } from "@/components/ui/button"
 import ErrorMessage from "@/components/ui/ErrorMessage"
 import { Input } from "@/components/ui/input"
 import { Label } from "@radix-ui/react-label"
-// import { LoaderCircle } from "lucide-react"
-
-import {
-    Select,
-    SelectContent,
-    SelectGroup,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-} from "@/components/ui/select"
 import { useState } from "react"
 import { Link } from "react-router-dom"
 import * as yup from "yup"
