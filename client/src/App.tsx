@@ -2,6 +2,7 @@ import { Suspense, lazy } from "react"; // Import React and Suspense
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ShowNavbar from "./components/ShowNavbar";
 import Navbar from "./components/Navbar";
+import RegisterLibrary from "./pages/RegisterLibrary";
 
 // Lazy loading components
 const Login = lazy(() => import("./pages/Login"));
@@ -40,6 +41,7 @@ function App() {
           {/* Public Routes */}
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/register-library" element={<RegisterLibrary />} />
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/book/:id" element={<BookDetails />} />
