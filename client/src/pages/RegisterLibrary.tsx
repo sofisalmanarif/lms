@@ -38,7 +38,7 @@ const RegisterLibrary = () => {
         name: yup.string().min(6, "Library must contain atleast 8 characters").required("Library name is required"),
         adminName: yup.string().min(6, "Admin Name must contain atleast 8 characters").required("Admin Name is required"),
         email: yup.string().email("Invalid Email format").required("Email is required"),
-        licienceNo: yup.string().required("Please Select Library Licience Number"),
+        licienceNo: yup.string().required("Library Licience Number is required"),
         // phoneNumber: yup.string().
         //     min(10, "Phone Number must be atleast 10 digit")
         //     .matches(/[0-9]/, "Phone Number must contain numbers only")
@@ -111,8 +111,8 @@ const RegisterLibrary = () => {
                         </div>
                         <div>
                             <Label>Library Licience No</Label>
-                            <Input value={library?.address} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setLibrary({ ...library, address: e.target.value })} type="select" placeholder="Srinagar"></Input>
-                            {errors?.address && <ErrorMessage message={errors.address} />}
+                            <Input value={library?.licienceNo} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setLibrary({ ...library, licienceNo: e.target.value })} type="select" placeholder="Srinagar"></Input>
+                            {errors?.licienceNo && <ErrorMessage message={errors.licienceNo} />}
                         </div>
 
                         <Button type="submit" className="sm:mt-6 mt-2 flex items-center justify-center sm:w-24 w-20 font-semibold">Register</Button>

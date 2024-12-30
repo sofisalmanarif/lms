@@ -9,3 +9,5 @@ class ErrorResponse extends Error{
     }
 
 }
+
+export default ErrorResponse
