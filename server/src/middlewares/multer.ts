@@ -12,8 +12,9 @@ const storage = multer.diskStorage({
 
     },
     filename: function (req, file, cb) {
+        const filename ="lms"+Date.now()+file.originalname.split(".")[1]
 
-        cb(null, file.originalname)
+        cb(null, filename)
     },
 
 })

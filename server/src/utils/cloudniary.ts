@@ -23,7 +23,14 @@ async function uploadOnCloudniary(imagePath: string) {
             console.log("uploadResult", result);
             return result;
         } catch (error) {
-            console.error(error);
+            if(error instanceof Error){
+                console.error(error);
+                throw new Error(error.message as string) ;
+            }else {
+                console.log("Something went wrong with upload method:", error);
+                throw new Error("Something went wrong with upload method");
+            }
+
         }
 
 

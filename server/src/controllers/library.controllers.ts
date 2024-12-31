@@ -68,8 +68,8 @@ export const registerLibrary = async (req: Request, res: Response, next: NextFun
 
 
 export const notVarifiedLibraries = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-
     try {
+
         const libraries = await Library.find({ library_verified: false })
 
         return res
