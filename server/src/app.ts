@@ -8,10 +8,12 @@ import { userType } from "./types/user.types.js";
 
 import libraryRouter from "./routes/library.routes.js"
 import { errorMiddleware } from "./middlewares/ErrorMiddleware.js";
-
+import path from "path";
+import bodyParser from "body-parser";
+import { uploadOnCloudniary } from "./utils/cloudniary.js";
 const app = express()
 
-
+bodyParser.urlencoded()
 const morganFormat = ":method :url :status :response-time ms";
 const corsOptions = {
     origin: 'http://localhost:5173',
@@ -40,6 +42,7 @@ app.use(express.json())
 app.use(express.urlencoded({
     extended: true
 }))
+app.use(express.static('public'));
 
 app.get("/", (req, res) => {
     res.status(200).json(new ApiResponse<userType[]>(400, [{
@@ -51,9 +54,6 @@ app.get("/", (req, res) => {
 
 app.use("/api/v1/libraries", libraryRouter)
 
-
-
-
-
 app.use(errorMiddleware);
+
 export { app }

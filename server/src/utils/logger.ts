@@ -18,7 +18,9 @@ const logger = createLogger({
             format: consoleLogFormat,
         }),
         new transports.File({ filename: "app.log" }),
+        new transports.File({ filename: 'error.log' })
     ],
 });
+
 
 export default logger;
