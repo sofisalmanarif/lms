@@ -76,7 +76,7 @@ const loginUser = async(req:Request,res:Response,next:NextFunction):Promise<any>
         if(!userFound.isVerified){
             return next(new ErrorResponse(400,"You are not Verified yet"))
          }
-         
+
         const authToken = userFound.generateJwtToken()
         console.log(authToken)
 
@@ -96,4 +96,6 @@ const loginUser = async(req:Request,res:Response,next:NextFunction):Promise<any>
         
     }
 }
+
+
 export {registerUser,loginUser}
