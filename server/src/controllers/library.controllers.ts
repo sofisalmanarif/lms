@@ -21,7 +21,7 @@ export const registerLibrary = async (req: Request, res: Response, next: NextFun
         if (name.trim() == "" || email.trim() == "" || address.trim() == "" || adminName.trim() == "" || licienceNo.trim() == "") {
             return next(new ErrorResponse(400, "All fields are required"));
         }
-        
+
         if (!file) {
             return next(new ErrorResponse(400, "Please upload a file"))
         }
@@ -86,7 +86,7 @@ export const notVarifiedLibraries = async (req: Request, res: Response, next: Ne
 
 
 
-export const varifiedLibraries = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+export const varifiedLibraries = async (req: Request, res: Response, next: NextFunction):Promise<any> => {
 
     try {
         const libraries = await Library.find({ library_verified: true })

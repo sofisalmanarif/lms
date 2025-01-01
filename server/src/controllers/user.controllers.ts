@@ -63,21 +63,21 @@ const loginUser = async(req:Request,res:Response,next:NextFunction):Promise<any>
             return next(new ErrorResponse(400, "Please provide email and password"))
             }
 
-       const  userFound=  await User.findOne({email})
-       if(!userFound){
+       const  user=  await User.findOne({email})
+       if(!user){
         return next(new ErrorResponse(400,"Invalid Cradentials"))
        }
 
-       const isPasswordCorrect = await userFound.isPasswordCorrect(password)
+       const isPasswordCorrect = await user.isPasswordCorrect(password)
        if(!isPasswordCorrect){
            return next(new ErrorResponse(400,"Invalid Cradentials"))
         }
 
-        if(!userFound.isVerified){
+        if(!user.isVerified){
             return next(new ErrorResponse(400,"You are not Verified yet"))
          }
 
-        const authToken = userFound.generateJwtToken()
+        const authToken = user.generateJwtToken()
         console.log(authToken)
 
        return res
