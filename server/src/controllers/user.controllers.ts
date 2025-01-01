@@ -58,9 +58,42 @@ const registerUser =async(req:Request,res:Response,next:NextFunction):Promise<an
 
 const loginUser = async(req:Request,res:Response,next:NextFunction):Promise<any>=>{
     try {
+        const {email,password} = req.body
+        if (!email || !password) {
+            return next(new ErrorResponse(400, "Please provide email and password"))
+            }
+
+       const  userFound=  await User.findOne({email})
+       if(!userFound){
+        return next(new ErrorResponse(400,"Invalid Cradentials"))
+       }
+
+       const isPasswordCorrect = await userFound.isPasswordCorrect(password)
+       if(!isPasswordCorrect){
+           return next(new ErrorResponse(400,"Invalid Cradentials"))
+        }
+
+        if(!userFound.isVerified){
+            return next(new ErrorResponse(400,"You are not Verified yet"))
+         }
+         
+        const authToken = userFound.generateJwtToken()
+        console.log(authToken)
+
+       return res
+       .status(200)
+       .cookie("auth-token",authToken,{
+        httpOnly:true,
+        secure:true,
+        maxAge: 900000
+       })
+       .json(new ApiResponse<{"auth-token":string}>(200,{"auth-token":authToken},"Login SuccessFull"))
         
     } catch (error) {
+        const err = error as Error
+        console.log(err)
+        return next(new ErrorResponse(500,err.message))
         
     }
 }
-export {registerUser}
+export {registerUser,loginUser}

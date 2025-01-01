@@ -4,6 +4,7 @@ import morgan from "morgan";
 import cors from "cors"
 import ApiResponse from "./utils/ApiResponse.js";
 import { userType } from "./types/user.types.js";
+import cookieParser from "cookie-parser"
 
 
 import { errorMiddleware } from "./middlewares/ErrorMiddleware.js";
@@ -40,6 +41,7 @@ app.use(
     })
 );
 app.use(cors(corsOptions))
+app.use(cookieParser())
 app.use(express.json())
 app.use(express.urlencoded({
     extended: true

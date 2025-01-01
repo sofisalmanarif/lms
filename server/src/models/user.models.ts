@@ -23,6 +23,9 @@ interface UserType extends Document {
     allowedBooks: number;
     allotedBooks: number;
     userFine: number;
+
+    isPasswordCorrect(password: string): Promise<boolean>;
+    generateJwtToken(): string
 }
 
 
@@ -83,6 +86,7 @@ const userSchema = new Schema<UserType>({
         default: 0
     },
 
+
 })
 
 
@@ -98,10 +102,10 @@ userSchema.methods.isPasswordCorrect = async function(password:string):Promise<b
 
 }
 
-userSchema.methods.generateJwtToken = function():string{
-    return jwt.sign({_id:this._id,role:this.role},process.env.JWT_SECRET!)
-
-}
+userSchema.methods.generateJwtToken = function (): string {
+    console.log("this", this); // Ensure "this" refers to the document instance
+    return jwt.sign({ _id: this._id, role: this.role }, process.env.JWT_SECRET!);
+};
 
 
 const User = mongoose.model<UserType>("User", userSchema)
