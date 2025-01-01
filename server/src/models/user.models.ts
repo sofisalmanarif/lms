@@ -12,6 +12,7 @@ interface UserType extends Document {
     userName: string;
     email: string;
     password: string;
+    validDocument: string;
     role: Role;
     isVerified: boolean;
     phoneNumber: string;
@@ -37,6 +38,10 @@ const userSchema = new Schema<UserType>({
         unique: true
     },
     password: {
+        type: String,
+        required: true
+    },
+    validDocument: {
         type: String,
         required: true
     },

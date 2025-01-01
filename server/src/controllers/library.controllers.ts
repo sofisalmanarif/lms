@@ -21,8 +21,7 @@ export const registerLibrary = async (req: Request, res: Response, next: NextFun
         if (name.trim() == "" || email.trim() == "" || address.trim() == "" || adminName.trim() == "" || licienceNo.trim() == "") {
             return next(new ErrorResponse(400, "All fields are required"));
         }
-
-        // [name,email,address,adminName,licienceNo].includes(el=>el==="")
+        
         if (!file) {
             return next(new ErrorResponse(400, "Please upload a file"))
         }

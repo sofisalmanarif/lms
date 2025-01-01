@@ -6,11 +6,13 @@ import ApiResponse from "./utils/ApiResponse.js";
 import { userType } from "./types/user.types.js";
 
 
-import libraryRouter from "./routes/library.routes.js"
 import { errorMiddleware } from "./middlewares/ErrorMiddleware.js";
 import path from "path";
 import bodyParser from "body-parser";
 import { uploadOnCloudniary } from "./utils/cloudniary.js";
+import libraryRouter from "./routes/library.routes.js"
+import userRouter from "./routes/user.routes.js"
+
 const app = express()
 
 bodyParser.urlencoded()
@@ -53,6 +55,7 @@ app.get("/", (req, res) => {
 
 
 app.use("/api/v1/libraries", libraryRouter)
+app.use("/api/v1/users", userRouter)
 
 app.use(errorMiddleware);
 
