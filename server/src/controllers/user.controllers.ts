@@ -160,7 +160,46 @@ const getMyProfile = async (
     }
 };
 
+const getUserRequests = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+): Promise<any> => {
+    try {
+        const loggedInUser = await User.findById(req.user) 
+        const newUserRequests = await User.find({ $and: [{ libId: loggedInUser?.libId }, { isVerified: false }] }).select("-password");
+        console.log(newUserRequests);
+        return res
+            .status(200)
+            .json(new ApiResponse<userType[]>(200, newUserRequests, "Not Verified Users"));
+    } catch (error) {
+        console.log(error);
+        next(error);
+    }
+};
+
+
+const getAllverifiedUsers = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+): Promise<any> => {
+    try {
+        console.log("hayy", req.user)
+        const loggedInUser =await  User.findById(req.user) 
+        
+        const allVerifiedUsers = await User.find({ $and: [{ libId: loggedInUser?.libId }, { role: "User" }, { isVerified: true }] }).select("-password");
+        console.log(allVerifiedUsers);
+        return res
+            .status(200)
+            .json(new ApiResponse<userType[]>(200, allVerifiedUsers, "All Users"));
+    } catch (error) {
+        console.log(error);
+        next(error);
+    }
+};
 
 
 
-export { registerUser, loginUser, logoutUser, getMyProfile };
+
+export { registerUser, loginUser, logoutUser, getMyProfile, getUserRequests, getAllverifiedUsers };
