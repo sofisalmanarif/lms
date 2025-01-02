@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-enum Role {
+export enum Role {
     Admin = "Admin",
     SuperAdmin = "Super Admin",
     User = "User",
@@ -18,4 +18,9 @@ export type userType = {
     verificationCode?: string;
     verificationCodeExpiry?: string
     libId: mongoose.Types.ObjectId;
+}
+
+export interface JwtPayload {
+    _id: string;
+    role: string; 
 }

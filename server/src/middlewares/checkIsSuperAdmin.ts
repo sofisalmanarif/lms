@@ -1,10 +1,10 @@
 import { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken";
 import ErrorResponse from "../utils/ErrorResponse.js";
-import { JwtPayload } from "../types/user.types.js";
+import { JwtPayload, Role } from "../types/user.types.js";
 
 
-export const isLoggedin = (req:Request, res:Response, next:NextFunction):void => {
+export const isSuperAdmin = (req:Request, res:Response, next:NextFunction):void => {
   try {
     const token  = req.cookies["auth-token"] ||  req.headers.authorization?.split(" ")[1]
     if(!token){
@@ -13,7 +13,9 @@ export const isLoggedin = (req:Request, res:Response, next:NextFunction):void =>
 
     const decodedToken = jwt.verify(token,process.env.JWT_SECRET!) as JwtPayload 
     console.log(decodedToken) 
-    req.user=decodedToken._id
+    if(decodedToken.role !== Role.SuperAdmin){
+        return next(new ErrorResponse(403, "You are not an admin"))
+    }
     next()
   } catch (error) {
     next(error)

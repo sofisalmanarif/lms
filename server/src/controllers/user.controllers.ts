@@ -146,7 +146,6 @@ const getMyProfile = async (
     next: NextFunction
 ): Promise<any> => {
     try {
-        print();
         const user = await User.findById(req.user).select("-password");
         console.log(user);
         if (!user) {
