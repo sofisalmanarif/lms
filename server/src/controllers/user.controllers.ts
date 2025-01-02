@@ -5,11 +5,12 @@ import ErrorResponse from "../utils/ErrorResponse.js";
 import { uploadOnCloudniary } from "../utils/cloudniary.js";
 import fs from "fs/promises"
 import multer from "multer";
+import { userType } from "../types/user.types.js";
 
-const registerUser =async(req:Request,res:Response,next:NextFunction):Promise<any>=>{
+const registerUser = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
 
     try {
-        const {userName,email,password,libId,} = req.body
+        const { userName, email, password, libId, } = req.body
         const file = req.file
         if (userName.trim() == "" || email.trim() == "" || password.trim() == "" || libId.trim() == "") {
             return next(new ErrorResponse(400, "All fields are required"));
@@ -27,12 +28,12 @@ const registerUser =async(req:Request,res:Response,next:NextFunction):Promise<an
                 libId,
                 validDocument: cloudniaryres?.url
             })
-            
+
             if (!user) {
                 return next(new ErrorResponse(400, "Failed to create library"))
             }
-            
-            return res.status(201).json(new ApiResponse<string>(201,user.userName,"User Created Successfully"))
+
+            return res.status(201).json(new ApiResponse<string>(201, user.userName, "User Created Successfully"))
         })
             .catch((error) => {
                 return next(new ErrorResponse(400, error.message))
@@ -41,8 +42,8 @@ const registerUser =async(req:Request,res:Response,next:NextFunction):Promise<an
                 console.log("finally")
                 await fs.unlink(file.path)
             })
-    
-        
+
+
     } catch (error) {
         const err = error as Error
         console.log(err)
@@ -50,66 +51,79 @@ const registerUser =async(req:Request,res:Response,next:NextFunction):Promise<an
             return next(new ErrorResponse(500, err.message));
         }
         return next(new ErrorResponse(500, err.message));
-        
+
     }
 
 }
 
 
-const loginUser = async(req:Request,res:Response,next:NextFunction):Promise<any>=>{
+const loginUser = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
     try {
-        const {email,password} = req.body
+        const { email, password } = req.body
         if (!email || !password) {
             return next(new ErrorResponse(400, "Please provide email and password"))
-            }
-
-       const  user=  await User.findOne({email})
-       if(!user){
-        return next(new ErrorResponse(400,"Invalid Cradentials"))
-       }
-
-       const isPasswordCorrect = await user.isPasswordCorrect(password)
-       if(!isPasswordCorrect){
-           return next(new ErrorResponse(400,"Invalid Cradentials"))
         }
 
-        if(!user.isVerified){
-            return next(new ErrorResponse(400,"You are not Verified yet"))
-         }
+        const user = await User.findOne({ email })
+        if (!user) {
+            return next(new ErrorResponse(400, "Invalid Cradentials"))
+        }
+
+        const isPasswordCorrect = await user.isPasswordCorrect(password)
+        if (!isPasswordCorrect) {
+            return next(new ErrorResponse(400, "Invalid Cradentials"))
+        }
+
+        if (!user.isVerified) {
+            return next(new ErrorResponse(400, "You are not Verified yet"))
+        }
 
         const authToken = user.generateJwtToken()
         console.log(authToken)
 
-       return res
-       .status(200)
-       .cookie("auth-token",authToken,{
-        httpOnly:true,
-        secure:true,
-        maxAge: 900000
-       })
-       .json(new ApiResponse<{"auth-token":string}>(200,{"auth-token":authToken},"Login SuccessFull"))
-        
+        return res
+            .status(200)
+            .cookie("auth-token", authToken, {
+                httpOnly: true,
+                secure: true,
+                maxAge: 900000
+            })
+            .json(new ApiResponse<{ "auth-token": string }>(200, { "auth-token": authToken }, "Login SuccessFull"))
+
     } catch (error) {
         const err = error as Error
         console.log(err)
-        return next(new ErrorResponse(500,err.message))
-        
+        return next(new ErrorResponse(500, err.message))
+
     }
 }
 
 
-const logoutUser = async(req:Request,res:Response,next:NextFunction):Promise<any>=>{
+const logoutUser = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
     try {
-        return res.status(200).clearCookie("auth-token").json(new ApiResponse<string>(200,"Logged Out Successfully","Logged Out Successfully"))
+        return res.status(200).clearCookie("auth-token").json(new ApiResponse<string>(200, "Logged Out Successfully", "Logged Out Successfully"))
 
     } catch (error) {
         const err = error as Error
         console.log(err)
-        return next(new ErrorResponse(500,err.message))
-        
+        return next(new ErrorResponse(500, err.message))
+
     }
 }
 
+const getMyProfile = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+    try {
+        const user  = await User.findById(req.user).select("-password")
+        console.log(user)
+        if(!user){
+            return next(new ErrorResponse(404, "User Not Found"))
+        }
+        return res.status(200).json(new ApiResponse<userType>(200, user, "User Profile"))
+    } catch (error) {
+        
+    }
+ }
 
 
-export {registerUser,loginUser,logoutUser}
+
+export { registerUser, loginUser, logoutUser ,getMyProfile}

@@ -16,7 +16,7 @@ export const isLoggedin = (req:Request, res:Response, next:NextFunction):void =>
 
     const decodedToken = jwt.verify(token,process.env.JWT_SECRET!) as JwtPayload
     console.log(decodedToken) 
-   
+    req.user=decodedToken._id
     next()
   } catch (error) {
     let err = error as Error
