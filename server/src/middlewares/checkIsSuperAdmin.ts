@@ -15,7 +15,7 @@ export const isSuperAdmin = (req:Request, res:Response, next:NextFunction):void 
     console.log(decodedToken) 
       req.user = decodedToken._id
     if(decodedToken.role !== Role.SuperAdmin){
-        return next(new ErrorResponse(403, "You are not an admin"))
+        return next(new ErrorResponse(403, "You are not Super Admin"))
     }
     next()
   } catch (error) {

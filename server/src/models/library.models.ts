@@ -1,6 +1,6 @@
 import mongoose, { Document,Schema } from "mongoose"
 
-interface libraryType extends Document {
+export interface LibraryType extends Document {
     lib_name: string;
     lib_admin: string;
     lib_email: string;
@@ -11,7 +11,7 @@ interface libraryType extends Document {
 }
 
 
-const librarySchema = new Schema<libraryType>({
+const librarySchema = new Schema<LibraryType>({
     lib_name: {
         type: String,
         required: true,
@@ -47,6 +47,6 @@ const librarySchema = new Schema<libraryType>({
 
 });
 
-const Library = mongoose.model<libraryType>('Library', librarySchema);
+const Library = mongoose.model<LibraryType>('Library', librarySchema);
 
 export default Library;

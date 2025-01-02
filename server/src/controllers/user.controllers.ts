@@ -68,6 +68,10 @@ const registerUser = async (
     }
 };
 
+
+
+
+
 const loginUser = async (
     req: Request,
     res: Response,
@@ -119,6 +123,10 @@ const loginUser = async (
     }
 };
 
+
+
+
+
 const logoutUser = async (
     req: Request,
     res: Response,
@@ -161,6 +169,11 @@ const getMyProfile = async (
     }
 };
 
+
+
+
+
+
 const getUserRequests = async (
     req: Request,
     res: Response,
@@ -182,6 +195,11 @@ const getUserRequests = async (
         next(error);
     }
 };
+
+
+
+
+
 
 
 const getAllverifiedUsers = async (
@@ -207,6 +225,10 @@ const getAllverifiedUsers = async (
 };
 
 
+
+
+
+
 const verifyUser = async (
     req: Request, 
     res: Response,
@@ -227,7 +249,7 @@ const verifyUser = async (
 
         if (!loggedInUser.libId.equals(verifiedUser.libId)) {
             // console.log(loggedInUser.libId.equals(verifiedUser.libId._id))
-            return next(new ErrorResponse(400, "You Are not allowed to verify this user"))
+            return next(new ErrorResponse(401, "You Are not allowed to verify this user"))
         }
 
         if (verifiedUser.isVerified) {
