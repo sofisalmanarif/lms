@@ -98,4 +98,18 @@ const loginUser = async(req:Request,res:Response,next:NextFunction):Promise<any>
 }
 
 
-export {registerUser,loginUser}
+const logoutUser = async(req:Request,res:Response,next:NextFunction):Promise<any>=>{
+    try {
+        return res.status(200).clearCookie("auth-token").json(new ApiResponse<string>(200,"Logged Out Successfully","Logged Out Successfully"))
+
+    } catch (error) {
+        const err = error as Error
+        console.log(err)
+        return next(new ErrorResponse(500,err.message))
+        
+    }
+}
+
+
+
+export {registerUser,loginUser,logoutUser}
