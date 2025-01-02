@@ -13,7 +13,7 @@ router.get("/logout",isLoggedin,logoutUser)
 router.get("/profile", isLoggedin, getMyProfile)
 router.get("/get-user-requests", isAdmin, getUserRequests)
 router.get("/get-all-verifiedusers", isAdmin, getAllverifiedUsers)
-router.get("/verify-user/:id", isAdmin, verifyUser)
+router.put("/verify-user/:id", isAdmin, verifyUser)
 
 
 

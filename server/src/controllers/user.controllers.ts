@@ -171,7 +171,7 @@ const getUserRequests = async (
         if (!loggedInUser) {
             return next(new ErrorResponse(404, "User Not Found"))
         }
-         
+
         const newUserRequests = await User.find({ $and: [{ libId: loggedInUser?.libId }, { isVerified: false }] }).select("-password");
         console.log(newUserRequests);
         return res
@@ -190,11 +190,11 @@ const getAllverifiedUsers = async (
     next: NextFunction
 ): Promise<any> => {
     try {
-        const loggedInUser =await  User.findById(req.user) 
-        if(!loggedInUser){
+        const loggedInUser = await User.findById(req.user)
+        if (!loggedInUser) {
             return next(new ErrorResponse(404, "User Not Found"))
         }
-        
+
         const allVerifiedUsers = await User.find({ $and: [{ libId: loggedInUser?.libId }, { role: "User" }, { isVerified: true }] }).select("-password");
         console.log(allVerifiedUsers);
         return res
@@ -208,13 +208,14 @@ const getAllverifiedUsers = async (
 
 
 const verifyUser = async (
-    req: Request,
+    req: Request, 
     res: Response,
     next: NextFunction
 ): Promise<any> => {
     try {
         console.log(req.params.id)
         const loggedInUser = await User.findById(req.user)
+
         if (!loggedInUser) {
             return next(new ErrorResponse(404, "User Not Found"))
         }
@@ -223,14 +224,19 @@ const verifyUser = async (
         if (!verifiedUser) {
             return next(new ErrorResponse(404, "User Not Found"))
         }
-        
+
+        if (!loggedInUser.libId.equals(verifiedUser.libId)) {
+            // console.log(loggedInUser.libId.equals(verifiedUser.libId._id))
+            return next(new ErrorResponse(400, "You Are not allowed to verify this user"))
+        }
+
         if (verifiedUser.isVerified) {
-            return next(new ErrorResponse(404, "User is Already Verified"))
+            return next(new ErrorResponse(400, "User is Already Verified"))
         }
 
         verifiedUser.isVerified = true
         await verifiedUser.save()
-        console.log(verifiedUser);
+        // console.log(verifiedUser);
         return res
             .status(200)
             .json(new ApiResponse<userType>(200, verifiedUser, `${verifiedUser.userName} is now Verified`));
