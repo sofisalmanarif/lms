@@ -53,13 +53,8 @@ export const registerLibrary = async (req: Request, res: Response, next: NextFun
 
 
     } catch (error) {
-        const err = error as Error
-        if (err instanceof multer.MulterError) {
-            console.log(err)
-            return next(new ErrorResponse(500, err.message));
-        }
-        console.log(err)
-        return next(new ErrorResponse(500, err.message));
+        console.log(error)
+        next(error)
     }
 }
 
@@ -76,9 +71,8 @@ export const notVarifiedLibraries = async (req: Request, res: Response, next: Ne
             .json(new ApiResponse<LibraryType[]>(201, libraries, "Library that are't varified"))
 
     } catch (error) {
-        const err = error as Error
-        console.log(err)
-        return next(new ErrorResponse(500, err.message));
+        console.log(error)
+        next(error)
 
 
     }
@@ -95,9 +89,8 @@ export const varifiedLibraries = async (req: Request, res: Response, next: NextF
             .json(new ApiResponse<LibraryType[]>(201, libraries, "varified Libraries"))
 
     } catch (error) {
-        const err = error as Error
-        console.log(err)
-        return next(new ErrorResponse(500, err.message));
+        console.log(error)
+        next(error)
 
 
     }
