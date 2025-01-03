@@ -4,5 +4,4 @@ export interface LibraryType {
     adminName: string;
     address: string;
     licienceNo: string;
-    validDocument?: string;
 }

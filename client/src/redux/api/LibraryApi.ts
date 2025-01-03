@@ -1,6 +1,9 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { LibraryType } from "../../../types/library.types";
-import { ApiResponse, ErrorResponse } from "../../../types/ApiResponse";
+import { MessageResponse } from "../../../types/ApiResponse";
+
+
+
 
 export const myLibraryAPI = createApi({
     reducerPath: "libraryApi",
@@ -13,10 +16,7 @@ export const myLibraryAPI = createApi({
             query: () => `library-requests`,
         }),
 
-        createLibrary: builder.mutation<
-            ApiResponse<string> | ErrorResponse,
-            FormData
-        >({
+        createLibrary: builder.mutation<MessageResponse, FormData>({
             query: (library) => ({
                 url: `register`,
                 method: "POST",

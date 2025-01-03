@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ShowNavbar from "./components/ShowNavbar";
 import Navbar from "./components/Navbar";
 import RegisterLibrary from "./pages/RegisterLibrary";
+import { Toaster } from "./components/ui/toaster";
 
 // Lazy loading components
 const Login = lazy(() => import("./pages/Login"));
@@ -34,6 +35,7 @@ function App() {
       <ShowNavbar>
         <Navbar />
       </ShowNavbar>
+      <Toaster />
 
       {/* Fallback while loading components */}
       <Suspense fallback={<div>Loading...</div>}>

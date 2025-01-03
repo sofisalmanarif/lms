@@ -53,9 +53,8 @@ const registerLibrary = async (
                 return res
                     .status(201)
                     .json(
-                        new ApiResponse<string>(
+                        new ApiResponse(
                             201,
-                            createdlibrary.lib_name,
                             "Library Created Successfully"
                         )
                     );
@@ -86,8 +85,8 @@ const notVarifiedLibraries = async (
             .json(
                 new ApiResponse<LibraryType[]>(
                     201,
+                    "Library that are't varified",
                     libraries,
-                    "Library that are't varified"
                 )
             );
     } catch (error) {
@@ -108,8 +107,8 @@ const varifiedLibraries = async (
             .json(
                 new ApiResponse<LibraryType[]>(
                     201,
+                    "varified Libraries",
                     libraries,
-                    "varified Libraries"
                 )
             );
     } catch (error) {
@@ -150,8 +149,8 @@ const verifyLibrary = async (
             .json(
                 new ApiResponse<LibraryType>(
                     200,
+                    `${verifiyLibrary.lib_name} is now Verified And admin name is ${libAdmin.userName}`,
                     verifiyLibrary,
-                    `${verifiyLibrary.lib_name} is now Verified And admin name is ${libAdmin.userName}`
                 )
             );
     } catch (error) {

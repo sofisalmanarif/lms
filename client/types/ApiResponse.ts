@@ -3,10 +3,16 @@ export type ApiResponse<T> = {
     data: T;
     message: string;
     success: boolean;
-}
+};
 
 export type ErrorResponse = {
     statusCode: number;
     message: string;
-    sucess:boolean
-}
+    sucess: boolean;
+};
+
+export type MessageResponse = {
+    statusCode:number;
+    success: boolean;
+    message: string;
+};

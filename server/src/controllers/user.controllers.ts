@@ -269,6 +269,7 @@ const verifyUser = async (
                     `${verifiedUser.userName} is now Verified`
                 )
             );
+            
     } catch (error) {
         console.log(error);
         next(error);
