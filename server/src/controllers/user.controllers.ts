@@ -46,9 +46,8 @@ const registerUser = async (
                 return res
                     .status(201)
                     .json(
-                        new ApiResponse<string>(
+                        new ApiResponse(
                             201,
-                            user.userName,
                             "User Created Successfully"
                         )
                     );
@@ -107,8 +106,8 @@ const loginUser = async (
             .json(
                 new ApiResponse<{ "auth-token": string }>(
                     200,
+                    "Login SuccessFull",
                     { "auth-token": authToken },
-                    "Login SuccessFull"
                 )
             );
     } catch (error) {
@@ -127,9 +126,8 @@ const logoutUser = async (
             .status(200)
             .clearCookie("auth-token")
             .json(
-                new ApiResponse<string>(
+                new ApiResponse(
                     200,
-                    "Logged Out Successfully",
                     "Logged Out Successfully"
                 )
             );
@@ -152,7 +150,7 @@ const getMyProfile = async (
         }
         return res
             .status(200)
-            .json(new ApiResponse<userType>(200, user, "User Profile"));
+            .json(new ApiResponse<userType>(200, "User Profile",user));
     } catch (error) {
         console.log(error);
         next(error);
@@ -179,8 +177,8 @@ const getUserRequests = async (
             .json(
                 new ApiResponse<userType[]>(
                     200,
+                    "Not Verified Users",
                     newUserRequests,
-                    "Not Verified Users"
                 )
             );
     } catch (error) {
@@ -213,8 +211,8 @@ const getAllverifiedUsers = async (
             .json(
                 new ApiResponse<userType[]>(
                     200,
+                    "All verified Users",
                     allVerifiedUsers,
-                    "All verified Users"
                 )
             );
     } catch (error) {
@@ -263,10 +261,9 @@ const verifyUser = async (
         return res
             .status(200)
             .json(
-                new ApiResponse<userType>(
+                new ApiResponse(
                     200,
-                    verifiedUser,
-                    `${verifiedUser.userName} is now Verified`
+                    `${verifiedUser.userName} is now Verified`,
                 )
             );
             
