@@ -6,8 +6,6 @@ import { uploadOnCloudniary } from "../utils/cloudniary.js";
 import fs from "fs/promises";
 import { userType } from "../types/user.types.js";
 
-
-
 const registerUser = async (
     req: Request,
     res: Response,
@@ -68,10 +66,6 @@ const registerUser = async (
     }
 };
 
-
-
-
-
 const loginUser = async (
     req: Request,
     res: Response,
@@ -123,10 +117,6 @@ const loginUser = async (
     }
 };
 
-
-
-
-
 const logoutUser = async (
     req: Request,
     res: Response,
@@ -169,38 +159,35 @@ const getMyProfile = async (
     }
 };
 
-
-
-
-
-
 const getUserRequests = async (
     req: Request,
     res: Response,
     next: NextFunction
 ): Promise<any> => {
     try {
-        const loggedInUser = await User.findById(req.user)
+        const loggedInUser = await User.findById(req.user);
         if (!loggedInUser) {
-            return next(new ErrorResponse(404, "User Not Found"))
+            return next(new ErrorResponse(404, "User Not Found"));
         }
 
-        const newUserRequests = await User.find({ $and: [{ libId: loggedInUser?.libId }, { isVerified: false }] }).select("-password");
+        const newUserRequests = await User.find({
+            $and: [{ libId: loggedInUser?.libId }, { isVerified: false }],
+        }).select("-password");
         console.log(newUserRequests);
         return res
             .status(200)
-            .json(new ApiResponse<userType[]>(200, newUserRequests, "Not Verified Users"));
+            .json(
+                new ApiResponse<userType[]>(
+                    200,
+                    newUserRequests,
+                    "Not Verified Users"
+                )
+            );
     } catch (error) {
         console.log(error);
         next(error);
     }
 };
-
-
-
-
-
-
 
 const getAllverifiedUsers = async (
     req: Request,
@@ -208,69 +195,92 @@ const getAllverifiedUsers = async (
     next: NextFunction
 ): Promise<any> => {
     try {
-        const loggedInUser = await User.findById(req.user)
+        const loggedInUser = await User.findById(req.user);
         if (!loggedInUser) {
-            return next(new ErrorResponse(404, "User Not Found"))
+            return next(new ErrorResponse(404, "User Not Found"));
         }
 
-        const allVerifiedUsers = await User.find({ $and: [{ libId: loggedInUser?.libId }, { role: "User" }, { isVerified: true }] }).select("-password");
+        const allVerifiedUsers = await User.find({
+            $and: [
+                { libId: loggedInUser?.libId },
+                { role: "User" },
+                { isVerified: true },
+            ],
+        }).select("-password");
         console.log(allVerifiedUsers);
         return res
             .status(200)
-            .json(new ApiResponse<userType[]>(200, allVerifiedUsers, "All verified Users"));
+            .json(
+                new ApiResponse<userType[]>(
+                    200,
+                    allVerifiedUsers,
+                    "All verified Users"
+                )
+            );
     } catch (error) {
         console.log(error);
         next(error);
     }
 };
 
-
-
-
-
-
 const verifyUser = async (
-    req: Request, 
+    req: Request,
     res: Response,
     next: NextFunction
 ): Promise<any> => {
     try {
-        console.log(req.params.id)
-        const loggedInUser = await User.findById(req.user)
+        console.log(req.params.id);
+        const loggedInUser = await User.findById(req.user);
 
         if (!loggedInUser) {
-            return next(new ErrorResponse(404, "User Not Found"))
+            return next(new ErrorResponse(404, "User Not Found"));
         }
 
-        const verifiedUser = await User.findById(req.params.id).select("-password");
+        const verifiedUser = await User.findById(req.params.id).select(
+            "-password"
+        );
         if (!verifiedUser) {
-            return next(new ErrorResponse(404, "User Not Found"))
+            return next(new ErrorResponse(404, "User Not Found"));
         }
 
         if (!loggedInUser.libId.equals(verifiedUser.libId)) {
             // console.log(loggedInUser.libId.equals(verifiedUser.libId._id))
-            return next(new ErrorResponse(401, "You Are not allowed to verify this user"))
+            return next(
+                new ErrorResponse(
+                    401,
+                    "You Are not allowed to verify this user"
+                )
+            );
         }
 
         if (verifiedUser.isVerified) {
-            return next(new ErrorResponse(400, "User is Already Verified"))
+            return next(new ErrorResponse(400, "User is Already Verified"));
         }
 
-        verifiedUser.isVerified = true
-        await verifiedUser.save()
+        verifiedUser.isVerified = true;
+        await verifiedUser.save();
         // console.log(verifiedUser);
         return res
             .status(200)
-            .json(new ApiResponse<userType>(200, verifiedUser, `${verifiedUser.userName} is now Verified`));
+            .json(
+                new ApiResponse<userType>(
+                    200,
+                    verifiedUser,
+                    `${verifiedUser.userName} is now Verified`
+                )
+            );
     } catch (error) {
         console.log(error);
         next(error);
     }
 };
 
-
-
-
-
-
-export { registerUser, loginUser, logoutUser, getMyProfile, getUserRequests, getAllverifiedUsers, verifyUser };
+export {
+    registerUser,
+    loginUser,
+    logoutUser,
+    getMyProfile,
+    getUserRequests,
+    getAllverifiedUsers,
+    verifyUser,
+};

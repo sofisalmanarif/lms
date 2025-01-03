@@ -2,12 +2,11 @@ import { NextFunction, Request, Response } from "express";
 import Library from "../models/library.models.js";
 import ErrorResponse from "../utils/ErrorResponse.js";
 import ApiResponse from "../utils/ApiResponse.js";
-import multer from "multer";
 import { LibraryType } from "../types/library.js";
 import { uploadOnCloudniary } from "../utils/cloudniary.js";
 import fs from "fs/promises";
 import User from "../models/user.models.js";
-import { Role, userType } from "../types/user.types.js";
+import { Role } from "../types/user.types.js";
 
 const registerLibrary = async (
     req: Request,
@@ -119,42 +118,51 @@ const varifiedLibraries = async (
     }
 };
 
-
 const verifyLibrary = async (
     req: Request,
     res: Response,
     next: NextFunction
 ): Promise<any> => {
     try {
-
-        const verifiyLibrary = await Library.findById(req.params.id)
+        const verifiyLibrary = await Library.findById(req.params.id);
         if (!verifiyLibrary) {
-            return next(new ErrorResponse(404, "Library not Found"))
+            return next(new ErrorResponse(404, "Library not Found"));
         }
 
         if (verifiyLibrary.library_verified) {
-            return next(new ErrorResponse(400, "Library is  Already Verified"))
+            return next(new ErrorResponse(400, "Library is  Already Verified"));
         }
 
-        verifiyLibrary.library_verified = true
-        await verifiyLibrary.save()
+        verifiyLibrary.library_verified = true;
+        await verifiyLibrary.save();
         const libAdmin = await User.create({
             userName: verifiyLibrary.lib_admin,
-            email:verifiyLibrary.lib_email,
+            email: verifiyLibrary.lib_email,
             password: "admin@123",
             validDocument: verifiyLibrary.lib_docs,
-            role:Role.Admin,
-            isVerified:true,
-            libId:verifiyLibrary._id
-        })
+            role: Role.Admin,
+            isVerified: true,
+            libId: verifiyLibrary._id,
+        });
         console.log(verifiyLibrary, libAdmin);
         return res
             .status(200)
-            .json(new ApiResponse<LibraryType>(200, verifiyLibrary, `${verifiyLibrary.lib_name} is now Verified And admin name is ${libAdmin.userName}`));
+            .json(
+                new ApiResponse<LibraryType>(
+                    200,
+                    verifiyLibrary,
+                    `${verifiyLibrary.lib_name} is now Verified And admin name is ${libAdmin.userName}`
+                )
+            );
     } catch (error) {
         console.log(error);
         next(error);
     }
-}; 
+};
 
-export { registerLibrary, notVarifiedLibraries, varifiedLibraries, verifyLibrary };
+export {
+    registerLibrary,
+    notVarifiedLibraries,
+    varifiedLibraries,
+    verifyLibrary,
+};
